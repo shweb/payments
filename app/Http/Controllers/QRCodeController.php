@@ -38,4 +38,9 @@ class QRCodeController extends Controller
         }
         return view('qrcode');
     }
+
+    public function test()
+    {
+        return "test success";
+    }
 }

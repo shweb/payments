@@ -17,3 +17,4 @@ Route::get('/', function () {
 Route::get('/wechat', 'QRCodeController@qrCodeWechat');
 Route::get('wechat/notify', 'NotifyController@NotifyWechat');
 Route::get('/success', 'NotifyController@successWechat');
+Route::get('/test', 'QRCodeController@test');
