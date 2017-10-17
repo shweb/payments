@@ -4,14 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="{{url('/public/assets/css/bootstrap.min.css')}}" rel="stylesheet">
-    <link rel="stylesheet" href="{{asset('css/style.css')}}">
-    <link rel="stylesheet" href="{{asset('css/css/mediaqueries.css')}}">
-    <link rel="stylesheet" href="{{asset('css/css/animate.css')}}">
-    <link rel="stylesheet" href="{{asset('css/css/font-awesome.css')}}">
-    <link href="{{asset('css/css/bootstrap.min.css')}}" rel="stylesheet">
-    <script src="{{asset('css/js/jquery.min.js')}}"></script>
-    <script src="{{asset('css/js/bootstrap.min.js')}}"></script>
+    <link rel="stylesheet" href="{{url('/')}}/public/css/mediaqueries.css">
+    <link rel="stylesheet" href="{{url('/')}}/public/css/animate.css">
+    <link rel="stylesheet" href="{{url('/')}}/public/css/font-awesome.css">
+    <link href="{{url('/')}}/public/css/bootstrap.min.css" rel="stylesheet">
+    <script src="{{url('/')}}/public/js/jquery.min.js"></script>
+    <script src="{{url('/')}}/public/js/bootstrap.min.js"></script>
     <title>微信支付样例-退款</title>
 </head>
 <body>
@@ -27,11 +25,11 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="#">
-                    <img src="{{asset('css/img/alipay.png')}}">
+                    <img src="{{url('/')}}/public/img/alipay.png">
                 </a>
 
                 <a class="navbar-brand" href="#">
-                    <img src="{{asset('css/img/wechat.png')}}">
+                    <img src="{{url('/')}}/public/img/wechat.png">
                 </a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
@@ -64,13 +62,13 @@
                 <div class="col-md-6 col-xs-12 text-center-md text-center-xs">
                     {{--<img src="http://paysdk.weixin.qq.com/example/qrcode.php?data=@php echo urlencode($url2); @endphp"
                          class="img-thumbnail qrcod" width="304" height="236">--}}
-                    <img src="{{asset('css/img/communicate.png')}}" class="img-thumbnail communicate"
+                    <img src="{{url('/')}}/public/img/communicate.png" class="img-thumbnail communicate"
                          width="304" height="236">
                 </div>
 
 
                 <div class="col-md-6 col-xs-12 text-center-md text-center-xs">
-                    <img src="{{asset('css/img/phone.png')}}" class="img-thumbnail" width="400" height="236">
+                    <img src="{{url('/')}}/public/img/phone.png" class="img-thumbnail" width="400" height="236">
                 </div>
             </div>
 
