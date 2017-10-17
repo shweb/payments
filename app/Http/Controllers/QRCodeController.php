@@ -34,7 +34,7 @@ class QRCodeController extends Controller
             $input->SetGoods_tag("ULTRAVIOLET");
             $input->SetNotify_url("http://uvbypp-mmbund-payments.com/wxpay/example/notify.php");
             $input->SetTrade_type("NATIVE");
-            $input->SetProduct_id("123456789");
+//            $input->SetProduct_id("123456789");
             $result = $notify->GetPayUrl($input);
             $url2 = $result["code_url"];
             return view('qrcode')->with(compact('url2'));
