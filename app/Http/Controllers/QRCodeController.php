@@ -12,7 +12,7 @@ class QRCodeController extends Controller
     public function qrCodeWechat(Request $req)
     {
 //        dd($req->input('from'));
-        dd($req->input());
+//        dd($req->input());
         $notify = new NativePay();
         if ($req->input('from') == 'uv') {
             $input = new WxPayUnifiedOrder();
