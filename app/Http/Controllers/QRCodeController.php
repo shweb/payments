@@ -29,6 +29,7 @@ class QRCodeController extends Controller
             $input->SetOut_trade_no(WxPayConfig::MCHID . date("YmdHis"));
             $input->SetTime_start(date("YmdHis"));
             $input->SetTime_expire(date("YmdHis", time() + 600));
+            dd('time start : ' . date("YmdHis") . ' time end : ' . date("YmdHis", time() + 600));
             $input->SetGoods_tag("ULTRAVIOLET");
             $input->SetNotify_url("http://uvbypp-mmbund-payments.com/wxpay/example/notify.php");
             $input->SetTrade_type("NATIVE");
