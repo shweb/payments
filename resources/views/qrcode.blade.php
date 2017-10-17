@@ -48,11 +48,9 @@
     <div class="container">
         <div class="row information">
             <div class="col-md-6 col-xs-12">
-                {{--<p><label>Order number :</label> <?php echo $_SESSION['booking_id'] ?></p>--}}
             </div>
             <div class="col-md-6 col-xs-12 ">
                 <p class="text-left-xs text-left-sm text-right-md"><label>Total Price
-                {{--: </label> <?php echo $_SESSION['amount'] ?>--}}
                 <p>
             </div>
         </div>
