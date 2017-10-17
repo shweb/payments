@@ -5,7 +5,7 @@ namespace App;
 use App\Lib\WxPayApi;
 use App\Lib\WxPayNotify;
 use App\Lib\WxPayOrderQuery;
-use App\Log;
+use App\CLogFileHandler;
 
 require_once "Lib/WxPay.Api.php";
 require_once 'Lib/WxPay.Notify.php';
@@ -16,6 +16,7 @@ class PayNotifyCallBack extends WxPayNotify
     {
         $logHandler = new CLogFileHandler("Logs/" . date('Y-m-d') . '.log');
         $log = Log::Init($logHandler, 15);
+        Log::DEBUG("debut log");
     }
 
     public function Queryorder($transaction_id)
