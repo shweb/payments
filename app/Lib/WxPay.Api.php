@@ -67,7 +67,7 @@ class WxPayApi
 //        var_dump($result);
 //        exit();
         self::reportCostTime($url, $startTimeStamp, $result);//上报请求花费时间
-
+        dd($result);
         return $result;
     }
 
