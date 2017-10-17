@@ -62,8 +62,8 @@
         <div class="bg-custom">
             <div class="row">
                 <div class="col-md-6 col-xs-12 text-center-md text-center-xs">
-                    <img src="http://paysdk.weixin.qq.com/example/qrcode.php?data=@php echo urlencode($url2); @endphp"
-                         class="img-thumbnail qrcod" width="304" height="236">
+                    {{--<img src="http://paysdk.weixin.qq.com/example/qrcode.php?data=@php echo urlencode($url2); @endphp"
+                         class="img-thumbnail qrcod" width="304" height="236">--}}
                     <img src="{{asset('css/img/communicate.png')}}" class="img-thumbnail communicate"
                          width="304" height="236">
                 </div>
