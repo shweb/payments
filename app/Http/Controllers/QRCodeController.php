@@ -17,13 +17,13 @@ class QRCodeController extends Controller
             $input = new WxPayUnifiedOrder();
             $input->SetBody("ULTRAVIOLET");
             $booking_id = $req->input('booking');
-            $_SESSION['booking_id'] = $booking_id;
+//            $_SESSION['booking_id'] = $booking_id;
             $input->SetAttach($booking_id);
             if ($req->input('amount')) {
                 $amount = intval($_GET['amount']);
                 $amount_vrai = 100 * $amount;
                 $input->SetTotal_fee($amount_vrai);
-                $_SESSION['amount'] = $amount;
+//                $_SESSION['amount'] = $amount;
             } else
                 $input->SetTotal_fee("1");
             $input->SetOut_trade_no(WxPayConfig::MCHID . date("YmdHis"));
