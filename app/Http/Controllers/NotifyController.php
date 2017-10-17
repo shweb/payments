@@ -11,7 +11,7 @@ class NotifyController extends Controller
     {
         $notify = new PayNotifyCallBack();
         $notify->Handle(false);
-        return redirect(url('/success'));
+        return "success";
     }
 
     public function successWechat(Request $request)
