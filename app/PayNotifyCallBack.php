@@ -71,3 +71,9 @@ class CLogFileHandler implements ILogHandler
         fclose($this->handle);
     }
 }
+
+interface ILogHandler
+{
+    public function write($msg);
+
+}
