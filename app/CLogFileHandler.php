@@ -2,13 +2,6 @@
 
 namespace App;
 
-
-interface ILogHandler
-{
-    public function write($msg);
-
-}
-
 class CLogFileHandler implements ILogHandler
 {
     private $handle = null;
