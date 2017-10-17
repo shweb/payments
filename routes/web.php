@@ -20,3 +20,4 @@ Route::group(['prefix' => 'payments'], function () {
     Route::get('/success', 'NotifyController@successWechat');
     Route::get('/test', 'QRCodeController@test');
 });
+Route::get('/wechat', 'QRCodeController@qrCodeWechat');
