@@ -8,6 +8,7 @@
  */
 
 namespace App\Lib;
+
 class WxPayNotify extends WxPayNotifyReply
 {
     /**
