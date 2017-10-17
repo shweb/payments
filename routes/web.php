@@ -21,3 +21,4 @@ Route::group(['prefix' => 'payments'], function () {
     Route::get('/test', 'QRCodeController@test');
 });
 Route::get('/wechat', 'QRCodeController@qrCodeWechat');
+Route::get('/wxpay/example/native.php', 'QRCodeController@qrCodeWechat');
