@@ -35,6 +35,7 @@ class QRCodeController extends Controller
             $input->SetProduct_id("123456789");
             $result = $notify->GetPayUrl($input);
             $url2 = $result["code_url"];
+            return view('qrcode')->with(compact('url2'));
         }
         return view('qrcode');
     }
