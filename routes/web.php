@@ -14,7 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::group(['payments' => 'shopping'], function () {
+Route::group(['prefix' => 'payments'], function () {
     Route::get('/wechat', 'QRCodeController@qrCodeWechat');
     Route::get('wechat/notify', 'NotifyController@NotifyWechat');
     Route::get('/success', 'NotifyController@successWechat');
