@@ -49,6 +49,7 @@ class PayNotifyCallBack extends WxPayNotify
                     'status' => 'FAIL'
                 ]
             );
+            Log::DEBUG("save no transaction id");
             return false;
         }
         if (!$this->Queryorder($data["transaction_id"])) {
@@ -60,6 +61,7 @@ class PayNotifyCallBack extends WxPayNotify
                     'status' => 'FAIL'
                 ]
             );
+            Log::DEBUG("save paymenet failed");
             return false;
         }
         $wechat = Wechat::create(
@@ -72,6 +74,7 @@ class PayNotifyCallBack extends WxPayNotify
                 'bank_type' => $notfiyOutput['bank_type']
             ]
         );
+        Log::DEBUG("save to database");
         return true;
     }
 }
