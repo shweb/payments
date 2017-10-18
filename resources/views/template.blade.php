@@ -42,13 +42,10 @@
     <div class="container">
         <div class="row information">
             <div class="col-md-6 col-xs-12">
-                <p class="text-left-xs text-left-sm text-right-md"><label>Order number
-                        :</label> {{\Illuminate\Support\Facades\Session::get('booking_id')}}</p>
+                <p><label>Order number :</label> {{\Illuminate\Support\Facades\Session::get('booking_id')}}</p>
             </div>
             <div class="col-md-6 col-xs-12 ">
-                <p class="text-left-xs text-left-sm text-right-md"><label>Total Price
-                        : </label> {{\Illuminate\Support\Facades\Session::get('amount')}}
-                <p>
+                <p class= "text-left-xs text-left-sm text-right-md"><label>Total Price :</label>{{\Illuminate\Support\Facades\Session::get('amount')}}</p>
             </div>
         </div>
         <hr class="separate">
