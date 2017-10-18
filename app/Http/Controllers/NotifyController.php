@@ -12,7 +12,7 @@ class NotifyController extends Controller
     {
         $notify = new PayNotifyCallBack();
         $notify->Handle(false);
-        return "success";
+        return "notify page";
     }
 
     public function successWechat(Request $request)

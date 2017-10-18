@@ -42,12 +42,36 @@ class PayNotifyCallBack extends WxPayNotify
 
         if (!array_key_exists("transaction_id", $data)) {
             $msg = "输入参数不正确";
+            $wechat = Wechat::create(
+                [
+                    'provider' => 'uv',
+                    'booking' => $notfiyOutput['attach'],
+                    'status' => 'FAIL'
+                ]
+            );
             return false;
         }
         if (!$this->Queryorder($data["transaction_id"])) {
             $msg = "订单查询失败";
+            $wechat = Wechat::create(
+                [
+                    'provider' => 'uv',
+                    'booking' => $notfiyOutput['attach'],
+                    'status' => 'FAIL'
+                ]
+            );
             return false;
         }
+        $wechat = Wechat::create(
+            [
+                'provider' => 'uv',
+                'booking' => $notfiyOutput['attach'],
+                'amount' => $notfiyOutput['total_fee'],
+                'status' => $notfiyOutput['return_code'],
+                'transaction_id' => $notfiyOutput['transaction_id'],
+                'bank_type' => $notfiyOutput['bank_type']
+            ]
+        );
         return true;
     }
 }

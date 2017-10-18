@@ -18,7 +18,8 @@ Route::group(['prefix' => 'payments'], function () {
     Route::get('/wechat', 'QRCodeController@qrCodeWechat');
     Route::any('/wechat/notify', 'NotifyController@NotifyWechat');
     Route::get('/success', 'NotifyController@successWechat');
-    Route::get('/test', 'QRCodeController@test');
+    Route::get('/failed', 'NotifyController@errorWechat');
 });
-Route::get('/wechat', 'QRCodeController@qrCodeWechat');
-Route::get('/wxpay/example/native.php', 'QRCodeController@qrCodeWechat');
+
+Route::get('/getNombre', 'WechatController@getNombre');
+Route::get('/getStatus', 'WechatController@getLastPayment');
