@@ -53,9 +53,10 @@ setInterval(checkNumber, 1000);
                                     if (booking_id == booking_id_session) {
                                         if (success == 'SUCCESS') {
                                             console.log('redirecting suceess');
-                                            window.location.href = '{{url('')}}'
+                                            window.location.href = '{{url('/payments/success')}}'
                                         } else {
                                             console.log('redirecting error');
+                                            window.location.href = '{{url('/payments/failed')}}'
                                         }
                                     }
                                 }
