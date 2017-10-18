@@ -68,7 +68,7 @@ class PayNotifyCallBack extends WxPayNotify
             [
                 'provider' => 'uv',
                 'booking' => $notfiyOutput['attach'],
-                'amount' => $notfiyOutput['total_fee'],
+                'amount' => intval($notfiyOutput['total_fee']) / 100,
                 'status' => $notfiyOutput['return_code'],
                 'transaction_id' => $notfiyOutput['transaction_id'],
                 'bank_type' => $notfiyOutput['bank_type'],
