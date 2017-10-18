@@ -17,10 +17,10 @@ class CreateWechatMigration extends Migration
             $table->increments('id');
             $table->string('provider');
             $table->integer('booking');
-            $table->float('amount');
+            $table->float('amount')->nullable();
             $table->string('status');
-            $table->string('transaction_id')->unique();
-            $table->string('bank_type');
+            $table->string('transaction_id')->unique()->nullable();
+            $table->string('bank_type')->nullable();
             $table->timestamps();
         });
     }
