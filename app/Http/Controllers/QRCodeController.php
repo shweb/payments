@@ -26,6 +26,10 @@ class QRCodeController extends Controller
                 $amount_vrai = 100 * $amount;
                 $input->SetTotal_fee($amount_vrai);
                 Session::put('amount', $amount);
+                if ($amount == 0) {
+                    $input->SetTotal_fee("1");
+                } else
+                    $input->SetTotal_fee($amount_vrai);
             } else
                 $input->SetTotal_fee("1");
             $input->SetOut_trade_no(WxPayConfig::MCHID . date("YmdHis"));
