@@ -6,6 +6,7 @@ use App\Lib\WxPayConfig;
 use App\Lib\WxPayUnifiedOrder;
 use App\NativePay;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class QRCodeController extends Controller
 {
@@ -19,12 +20,13 @@ class QRCodeController extends Controller
             $input->SetBody("ULTRAVIOLET");
             $booking_id = $req->input('booking');
 //            $_SESSION['booking_id'] = $booking_id;
+            Session::put('booking_id', $booking_id);
             $input->SetAttach($booking_id);
             if ($req->input('amount')) {
                 $amount = intval($_GET['amount']);
                 $amount_vrai = 100 * $amount;
                 $input->SetTotal_fee($amount_vrai);
-//                $_SESSION['amount'] = $amount;
+                Session::put('amount', $amount);
             } else
                 $input->SetTotal_fee("1");
             $input->SetOut_trade_no(WxPayConfig::MCHID . date("YmdHis"));
