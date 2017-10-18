@@ -71,7 +71,7 @@ class PayNotifyCallBack extends WxPayNotify
                 'amount' => $notfiyOutput['total_fee'],
                 'status' => $notfiyOutput['return_code'],
                 'transaction_id' => $notfiyOutput['transaction_id'],
-                'bank_type' => $notfiyOutput['bank_type']
+                'bank_type' => $notfiyOutput['bank_type'],
             ]
         );
         Log::DEBUG("save to database");
