@@ -47,9 +47,13 @@
     <div class="container">
         <div class="row information">
             <div class="col-md-6 col-xs-12">
+                <p class="text-left-xs text-left-sm text-right-md">
+                    <label>Order number : {{\Illuminate\Support\Facades\Session::get('booking_id')}}</label>
+                </p>
             </div>
             <div class="col-md-6 col-xs-12 ">
-                <p class="text-left-xs text-left-sm text-right-md"><label>Total Price
+                <p class="text-left-xs text-left-sm text-right-md">
+                    <label>Total Price : {{\Illuminate\Support\Facades\Session::get('amount')}}</label>
                 <p>
             </div>
         </div>
