@@ -20,4 +20,10 @@
     </section>
 @endsection
 @section("script")
+    <script>
+        setTimeout(redirect, 5000);
+        function redirect() {
+            window.location.href = 'http://uvbypp.cc/bookings/wechat?code=success';
+        }
+    </script>
 @endsection
