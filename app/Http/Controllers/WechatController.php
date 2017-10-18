@@ -16,8 +16,12 @@ Class WechatController extends Controller
     public function getLastPayment()
     {
         $wechat = Wechat::orderby('id', 'desc')->take(1);
-        $w = $wechat->get()[0];
-        return $w->booking . '|' . $w->status;
+        $ok = false;
+        count($wechat->get()) == 0 ? $ok = false : $ok = true;
+        if ($ok)
+            return $wechat->get()[0]->booking . '|' . $wechat->get()[0]->status;
+        else
+            return "0|FAIL";
     }
 }
 
