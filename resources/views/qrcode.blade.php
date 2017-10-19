@@ -52,6 +52,11 @@ setInterval(checkNumber, 1000);
                                     success = dataBooking.split('|')[1];
                                     if (booking_id == booking_id_session) {
                                         if (success == 'SUCCESS') {
+                                            @if(!empty($amount_vrai))
+                                            {{\Illuminate\Support\Facades\Session::put('deposit',$amount_vrai)}}
+                                            @else
+                                            {{\Illuminate\Support\Facades\Session::put('deposit',0)}}
+                                            @endif
                                             console.log('redirecting suceess');
                                             window.location.href = '{{url('/payments/success')}}'
                                         } else {

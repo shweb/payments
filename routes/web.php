@@ -25,6 +25,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 });
 Route::get('/getNombre', 'WechatController@getNombre');
 Route::get('/getStatus', 'WechatController@getLastPayment');
+Route::get('/getPayement', 'WechatController@getPayement');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

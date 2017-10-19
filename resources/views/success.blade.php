@@ -32,19 +32,40 @@
 @endsection
 @section("script")
     <script>
-        var n = 5;
-        var tm = setInterval(countDown, 1000);
+        $.ajax({
+            url: '{{url('/getPayement')}}',
+            type: 'GET',
+            data: 'booking={{\Illuminate\Support\Facades\Session::get('booking_id')}}',
+            success: function (data) {
+                var amount = data.split('|')[0];
+                var transaction = data.split('|')[1];
+                var date = data.split('|')[2];
+                $.ajax({
+                    url: 'https://uvbypp.cc/bkk/adminv2/index.php/wechat/callback',
+                    type: 'POST',
+                    data: 'booking={{\Illuminate\Support\Facades\Session::get('booking_id')}}&status=PAID&amount=' + amount + '&date=' + date + '&transaction=' + transaction,
+                    success: function (callback) {
+                        var n = 5;
+                        var tm = setInterval(countDown, 1000);
 
-        function countDown() {
-            n--;
-            $('#counter').html(n);
-            if (n == 0) {
-                clearInterval(tm);
+                        function countDown() {
+                            n--;
+                            $('#counter').html(n);
+                            if (n == 0) {
+                                clearInterval(tm);
+                            }
+                        }
+
+                        setTimeout(redirect, 5000);
+                        function redirect() {
+                            window.location.href = 'http://uvbypp.cc/bookings/account/history';
+                        }
+                    }, error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        alert("Status: " + textStatus);
+                        alert("Error: " + errorThrown);
+                    }
+                });
             }
-        }
-        setTimeout(redirect, 5000);
-        function redirect() {
-            window.location.href = 'http://uvbypp.cc/bookings';
-        }
+        });
     </script>
 @endsection
