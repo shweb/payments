@@ -44,6 +44,8 @@
                     url: 'https://uvbypp.cc/bkk/adminv2/index.php/wechat/callback',
                     type: 'POST',
                     data: 'booking={{\Illuminate\Support\Facades\Session::get('booking_id')}}&status=PAID&amount=' + amount + '&date=' + date + '&transaction=' + transaction,
+					crossDomain: true,
+					dataType: 'jsonp',
                     success: function (callback) {
                         var n = 5;
                         var tm = setInterval(countDown, 1000);
@@ -63,7 +65,7 @@
                     }, error: function (XMLHttpRequest, textStatus, errorThrown) {
                         alert("Status: " + textStatus);
                         alert("Error: " + errorThrown);
-                    }
+                    }, beforeSend: setHeader
                 });
             }
         });
