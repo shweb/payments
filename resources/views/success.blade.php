@@ -44,6 +44,7 @@
                     url: 'https://uvbypp.cc/bkk/adminv2/index.php/wechat/callback',
                     type: 'GET',
                     data: 'booking={{\Illuminate\Support\Facades\Session::get('booking_id')}}&status=PAID&amount=' + amount + '&date=' + date + '&transaction=' + transaction,
+					datatype:'jsonp',
 					crossDomain: true,
                     success: function (callback) {
                         var n = 5;
@@ -62,21 +63,7 @@
                             window.location.href = 'http://uvbypp.cc/bookings/account/history';
                         }
                     }, error: function (XMLHttpRequest, textStatus, errorThrown) {
-                        var n = 5;
-                        var tm = setInterval(countDown, 1000);
-
-                        function countDown() {
-                            n--;
-                            $('#counter').html(n);
-                            if (n == 0) {
-                                clearInterval(tm);
-                            }
-                        }
-
-                        setTimeout(redirect, 5000);
-                        function redirect() {
-                            window.location.href = 'http://uvbypp.cc/bookings/account/history';
-                        }
+                        console.log(textStatus,errorThrown);
                     }
                 });
             }
