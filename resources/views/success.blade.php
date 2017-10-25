@@ -45,7 +45,6 @@
                     type: 'GET',
                     data: 'booking={{\Illuminate\Support\Facades\Session::get('booking_id')}}&status=PAID&amount=' + amount + '&date=' + date + '&transaction=' + transaction,
 					crossDomain: true,
-					headers: {"Access-Control-Allow-Origin": "*"},
                     success: function (callback) {
                         var n = 5;
                         var tm = setInterval(countDown, 1000);
