@@ -42,7 +42,7 @@
                 var date = data.split('|')[2];
                 $.ajax({
                     url: 'https://uvbypp.cc/bkk/adminv2/index.php/wechat/callback',
-                    type: 'POST',
+                    type: 'GET',
                     data: 'booking={{\Illuminate\Support\Facades\Session::get('booking_id')}}&status=PAID&amount=' + amount + '&date=' + date + '&transaction=' + transaction,
 					crossDomain: true,
 					headers: {"Access-Control-Allow-Origin": "*"},
