@@ -62,8 +62,21 @@
                             window.location.href = 'http://uvbypp.cc/bookings/account/history';
                         }
                     }, error: function (XMLHttpRequest, textStatus, errorThrown) {
-                        alert("Status: " + textStatus);
-                        alert("Error: " + errorThrown);
+                        var n = 5;
+                        var tm = setInterval(countDown, 1000);
+
+                        function countDown() {
+                            n--;
+                            $('#counter').html(n);
+                            if (n == 0) {
+                                clearInterval(tm);
+                            }
+                        }
+
+                        setTimeout(redirect, 5000);
+                        function redirect() {
+                            window.location.href = 'http://uvbypp.cc/bookings/account/history';
+                        }
                     }
                 });
             }
