@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    History payment
                     <ul class="nav">
                         <li>
                             <a href="{{url('/admin/wechat')}}">Wechat</a>

@@ -9,9 +9,10 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>PAYMENTS</title>
-
     <!-- Styles -->
     <link href="{{ url('/') }}/public/css/app.css" rel="stylesheet">
+    <script src="{{ url('/') }}/public/js/jquery.min.js"></script>
+    <script src="{{url('/')}}/public/js/app.js"></script>
 </head>
 <body>
 <div id="app">
@@ -55,6 +56,10 @@
 
                             <ul class="dropdown-menu" role="menu">
                                 <li>
+                                    <a href="{{url('admin/wechat')}}">Wechat history</a>
+                                </li>
+
+                                <li>
                                     <a href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -66,6 +71,7 @@
                                         {{ csrf_field() }}
                                     </form>
                                 </li>
+
                             </ul>
                         </li>
                     @endif
@@ -75,9 +81,10 @@
     </nav>
 
     @yield('content')
+
+    @yield('specificScript')
 </div>
 
 <!-- Scripts -->
-<script src="{{url('/')}}/public/js/app.js"></script>
 </body>
 </html>
