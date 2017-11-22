@@ -63,11 +63,12 @@ class WxPayApi
         $startTimeStamp = self::getMillisecond();//请求开始时间
         $response = self::postXmlCurl($xml, $url, false, $timeOut);
 //        var_dump($response);
+//        dd('response' . $response);
         $result = WxPayResults::Init($response);
 //        var_dump($result);
 //        exit();
         self::reportCostTime($url, $startTimeStamp, $result);//上报请求花费时间
-
+//        dd($result);
         return $result;
     }
 
@@ -421,16 +422,18 @@ class WxPayApi
     public static function notify($callback, &$msg)
     {
         //获取通知的数据
-        $xml = $GLOBALS['HTTP_RAW_POST_DATA'];
-        //如果返回成功则验证签名
-        try {
-            $result = WxPayResults::Init($xml);
-        } catch (WxPayException $e) {
-            $msg = $e->errorMessage();
-            return false;
-        }
+        if (!empty($GLOBALS['HTTP_RAW_POST_DATA'])) {
+            $xml = $GLOBALS['HTTP_RAW_POST_DATA'];
+            //如果返回成功则验证签名
+            try {
+                $result = WxPayResults::Init($xml);
+            } catch (WxPayException $e) {
+                $msg = $e->errorMessage();
+                return false;
+            }
 
-        return call_user_func($callback, $result);
+            return call_user_func($callback, $result);
+        }
     }
 
     /**

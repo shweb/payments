@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ILogHandler;
 use App\PayNotifyCallBack;
 use Illuminate\Http\Request;
 
@@ -11,7 +12,7 @@ class NotifyController extends Controller
     {
         $notify = new PayNotifyCallBack();
         $notify->Handle(false);
-        return redirect(url('/success'));
+        return "notify page";
     }
 
     public function successWechat(Request $request)
@@ -24,3 +25,5 @@ class NotifyController extends Controller
         return view('error');
     }
 }
+
+
