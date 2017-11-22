@@ -10,13 +10,14 @@
                 <div class="panel-body" id="message">
                     <div class="col-md-12"><p style="color:#ff0000;">The end date must be superior on the start date.</p></div>
                 </div>
+
                 <div class="panel-body">
                     <div class="col-md-3">Payments date</div>
                     <form role="form" method="POST" action="resutl_search">
                         {{ csrf_field() }}
                         <input type="hidden" name="title" value="payment">
-                        <div class="col-md-3"><input type="texte" name="debut" id="datepicker"></div>
-                        <div class="col-md-3"><input type="texte" name="fin" id="datepicker1"></div>
+                        <div class="col-md-3"><input type="texte" name="debut" id="datepicker" placeholder="start date"></div>
+                        <div class="col-md-3"><input type="texte" name="fin" id="datepicker1" placeholder="end date"></div>
                         <div class="col-md-3"><button class=" btn btn-primary" type="submit" id="search">Search</button></div>
                     </form>
                 </div>
@@ -25,49 +26,53 @@
                     <form role="form" method="POST" action="resutl_search">
                         {{ csrf_field() }}
                         <input type="hidden" name="title" value="booking">
-                        <div class="col-md-3"><input type="texte" name="debut" id="datepicker2"></div>
-                        <div class="col-md-3"><input type="texte" name="fin" id="datepicker3"></div>
+                        <div class="col-md-3"><input type="texte" name="debut" id="datepicker2" placeholder="start date"></div>
+                        <div class="col-md-3"><input type="texte" name="fin" id="datepicker3" placeholder="end date"></div>
                         <div class="col-md-3"><button class=" btn btn-primary" type="submit" id="search1">Search</button></div>
                     </form>
                 </div>
-                <div class="panel-body" id="generale">
-                    <div class="table-responsive users-table">
-                        <table class="table table-striped table-condensed data-table">
-                            <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>PROVIDER</th>
-                                <th>BOOKING ID</th>
-                                <th>AMOUNT</th>
-                                <th>STATUS</th>
-                                <th>TRANSACTION ID</th>
-                                <th>BOOKING NAME</th>
-                                <th>BOOKING DATE</th>
-                                <th>BANK TYPE</th>
-                                <th>DATE PAYMENT</th>
-                            </tr>
-                            </thead>
-                            @foreach($payments as $p)
+                <!--resultat search-->
+                @if(isset($data))
+                    <div class="panel-body" id="result">
+                        <div class="table-responsive users-table">
+                            <table class="table table-striped table-condensed data-table">
+                                <thead>
                                 <tr>
-                                    <td>{{$p->id}}</td>
-                                    <td>{{$p->provider}}</td>
-                                    <td>{{$p->booking}}</td>
-                                    <td>{{$p->amount}}</td>
-                                    <td>{{$p->status}}</td>
-                                    <td>{{$p->transaction_id}}</td>
-                                    <td>{{$p->booking_name}}</td>
-                                    @if(isset($p->booking_date))
-                                        <td>{{ \Carbon\Carbon::parse($p->booking_date)->format('d M Y')}}</td>
-                                    @else
-                                        <td></td>
-                                    @endif
-                                    <td>{{$p->bank_type}}</td>
-                                    <td>{{ \Carbon\Carbon::parse($p->created_at)->format('d M Y')}}</td>
+                                    <th>ID</th>
+                                    <th>PROVIDER</th>
+                                    <th>BOOKING ID</th>
+                                    <th>AMOUNT</th>
+                                    <th>STATUS</th>
+                                    <th>TRANSACTION ID</th>
+                                    <th>BOOKING NAME</th>
+                                    <th>BOOKING DATE</th>
+                                    <th>BANK TYPE</th>
+                                    <th>DATE PAYMENT</th>
                                 </tr>
-                            @endforeach
-                        </table>
+                                </thead>
+                                @foreach($data as $d)
+                                    <tr>
+                                        <td>{{$d->id}}</td>
+                                        <td>{{$d->provider}}</td>
+                                        <td>{{$d->booking}}</td>
+                                        <td>{{$d->amount}}</td>
+                                        <td>{{$d->status}}</td>
+                                        <td>{{$d->transaction_id}}</td>
+                                        <td>{{$d->booking_name}}</td>
+                                        @if(isset($d->booking_date))
+                                            <td>{{ \Carbon\Carbon::parse($d->booking_date)->format('d M Y')}}</td>
+                                        @else
+                                            <td></td>
+                                        @endif
+                                        <td>{{$d->bank_type}}</td>
+                                        <td>{{ \Carbon\Carbon::parse($d->created_at)->format('d M Y')}}</td>
+                                    </tr>
+                                @endforeach
+                            </table>
+                        </div>
                     </div>
-                </div>
+                @endif
+                <!--resultat search-->
             </div>
         </div>
     </div>
@@ -85,10 +90,11 @@
             $('#datepicker3').datepicker({dateFormat: 'yy-mm-dd',});
         } );
         $('#search').click(function () {
-            var dd1 = $('#datepicker2').val();
-            var df1 = $('#datepicker3').val();
+            var dd1 = $('#datepicker').val();
+            var df1 = $('#datepicker1').val();
             var dd = new Date(dd1);
             var df = new Date(df1);
+
             console.log(dd + "/////" + df);
             if (df <= dd) {
                 $('#message').show();
@@ -114,9 +120,11 @@
             else{
                 $('#generale').hide();
             }
+
         });
+
     </script>
-    @if (count($payments) > 10)
+    @if (count($data) > 10)
         <script src="{{ url('/') }}/public/js/jquery.dataTables.min.js"></script>
         <script src="{{ url('/') }}/public/js/dataTables.bootstrap.min.js"></script>
         <script type="text/javascript">

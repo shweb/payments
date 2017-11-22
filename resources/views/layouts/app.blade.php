@@ -13,6 +13,10 @@
     <link href="{{ url('/') }}/public/css/app.css" rel="stylesheet">
     <script src="{{ url('/') }}/public/js/jquery.min.js"></script>
     <script src="{{url('/')}}/public/js/app.js"></script>
+    <link rel="stylesheet" href="{{ url('/') }}/public/css/jquery-ui.css">
+    <script src="{{url('/')}}/public/js/jquery-1.12.4.js"></script>
+    <script src="{{url('/')}}/public/js/jquery-ui.js"></script>
+
 </head>
 <body>
 <div id="app">
