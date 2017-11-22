@@ -11,5 +11,3 @@ npm-debug.log
 yarn-error.log
 .env
 /Logs
-/public
-/resources/assets

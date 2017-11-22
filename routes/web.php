@@ -20,6 +20,12 @@ Route::group(['prefix' => 'payments'], function () {
     Route::get('/success', 'NotifyController@successWechat');
     Route::get('/failed', 'NotifyController@errorWechat');
 });
-
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+    Route::get('/wechat', 'AdminController@wechat');
+});
 Route::get('/getNombre', 'WechatController@getNombre');
 Route::get('/getStatus', 'WechatController@getLastPayment');
+Route::get('/getPayement', 'WechatController@getPayement');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

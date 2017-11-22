@@ -18,16 +18,16 @@
     <nav id="background" class="navbar navbar-default navbar-static-top ">
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                <button type="button" class="navbar-toggle collapsed hidden-xs hidden-sm" data-toggle="collapse" data-target="#navbar"
                         aria-expanded="false" aria-controls="navbar">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">
+                {{--<a class="navbar-brand" href="#">
                     <img src="{{url('/')}}/public/img/alipay.png">
-                </a>
+                </a>--}}
 
                 <a class="navbar-brand" href="#">
                     <img src="{{url('/')}}/public/img/wechat.png">
@@ -42,13 +42,10 @@
     <div class="container">
         <div class="row information">
             <div class="col-md-6 col-xs-12">
-                <p class="text-left-xs text-left-sm text-right-md"><label>Order number
-                        :</label> {{\Illuminate\Support\Facades\Session::get('booking_id')}}</p>
+                <p><label>Order number :</label> {{\Illuminate\Support\Facades\Session::get('booking_id')}}</p>
             </div>
             <div class="col-md-6 col-xs-12 ">
-                <p class="text-left-xs text-left-sm text-right-md"><label>Total Price
-                        : </label> {{\Illuminate\Support\Facades\Session::get('amount')}}
-                <p>
+                <p class= "text-left-xs text-left-sm text-right-md"><label>Total Price :</label>{{\Illuminate\Support\Facades\Session::get('amount')}}</p>
             </div>
         </div>
         <hr class="separate">
