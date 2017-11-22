@@ -55,8 +55,7 @@
 <footer id="footer">
     <div class="container">
         <hr class="divider">
-        <p class="text-center">Copyright © Ultraviolet 2017
-        <p>
+        <p class="text-center">Copyright © Ultraviolet 2017 -  沪ICP备16038688号-2</p>
     </div>
 </footer>
 @yield('script')

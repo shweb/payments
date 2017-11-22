@@ -22,6 +22,7 @@ Route::group(['prefix' => 'payments'], function () {
 });
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/wechat', 'AdminController@wechat');
+    Route::post('/resutl_search', 'AdminController@trie_date');
 });
 Route::get('/getNombre', 'WechatController@getNombre');
 Route::get('/getStatus', 'WechatController@getLastPayment');
