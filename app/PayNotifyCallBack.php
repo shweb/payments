@@ -72,6 +72,8 @@ class PayNotifyCallBack extends WxPayNotify
                 'status' => $notfiyOutput['return_code'],
                 'transaction_id' => $notfiyOutput['transaction_id'],
                 'bank_type' => $notfiyOutput['bank_type'],
+                'booking_name' => Session::get('booking_name'),
+                'booking_date' => Session::get('booking_date'),
             ]
         );
         Log::DEBUG("save to database");
