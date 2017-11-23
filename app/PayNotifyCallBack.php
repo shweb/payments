@@ -5,7 +5,7 @@ namespace App;
 use App\Lib\WxPayApi;
 use App\Lib\WxPayNotify;
 use App\Lib\WxPayOrderQuery;
-
+use Illuminate\Support\Facades\Session;
 require_once "Lib/WxPay.Api.php";
 require_once 'Lib/WxPay.Notify.php';
 
