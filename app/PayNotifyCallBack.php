@@ -64,6 +64,8 @@ class PayNotifyCallBack extends WxPayNotify
             Log::DEBUG("save paymenet failed");
             return false;
         }
+        $b_n=Session::get('booking_name');
+        $b_d=Session::get('booking_date');
         $wechat = Wechat::create(
             [
                 'provider' => 'uv',
@@ -72,8 +74,8 @@ class PayNotifyCallBack extends WxPayNotify
                 'status' => $notfiyOutput['return_code'],
                 'transaction_id' => $notfiyOutput['transaction_id'],
                 'bank_type' => $notfiyOutput['bank_type'],
-                'booking_name' => Session::get('booking_name'),
-                'booking_date' => Session::get('booking_date'),
+                'booking_name' => $b_n,
+                'booking_date' => $b_d,
             ]
         );
         Log::DEBUG("save to database");
