@@ -42,9 +42,9 @@ class PayNotifyCallBack extends WxPayNotify
         Log::DEBUG("call back:" . $jsonData);
         $notfiyOutput = json_decode($jsonData, true);
 
-        $booking_id = $notfiyOutput['attach'] . explode('#')[0];
-        $booking_name = $notfiyOutput['attach'] . explode('#')[1];
-        $booking_date = $notfiyOutput['attach'] . explode('#')[2];
+        $booking_id = explode('#',$notfiyOutput['attach'])[0];
+        $booking_name = explode('#',$notfiyOutput['attach'])[1];
+        $booking_date = explode('#',$notfiyOutput['attach'])[2];
 
         if (!array_key_exists("transaction_id", $data)) {
             $msg = "输入参数不正确";
