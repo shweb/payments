@@ -20,9 +20,9 @@ class QRCodeController extends Controller
             $input->SetBody("ULTRAVIOLET");
             $booking_id = $req->input('booking');
             Session::put('booking_id', $booking_id);
-            Session::put('booking_name', $req->input('booking_name'));
-            Session::put('booking_date', $req->input('booking_date'));
-            $input->SetAttach($booking_id);
+            $booking_name = $req->input('booking_name');
+            $booking_date = $req->input('booking_date');
+            $input->SetAttach($booking_id . '#' . $booking_name . '#' . $booking_date);
             $amount_vrai = 0;
             if ($req->input('amount')) {
                 $amount = floatval($_GET['amount']);
