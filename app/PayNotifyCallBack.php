@@ -6,6 +6,7 @@ use App\Lib\WxPayApi;
 use App\Lib\WxPayNotify;
 use App\Lib\WxPayOrderQuery;
 use Illuminate\Support\Facades\Session;
+
 require_once "Lib/WxPay.Api.php";
 require_once 'Lib/WxPay.Notify.php';
 
@@ -36,16 +37,21 @@ class PayNotifyCallBack extends WxPayNotify
 
     public function NotifyProcess($data, &$msg)
     {
+
         $jsonData = json_encode($data);
         Log::DEBUG("call back:" . $jsonData);
         $notfiyOutput = json_decode($jsonData, true);
+
+        $booking_id = $notfiyOutput['attach'] . explode('#')[0];
+        $booking_name = $notfiyOutput['attach'] . explode('#')[1];
+        $booking_date = $notfiyOutput['attach'] . explode('#')[2];
 
         if (!array_key_exists("transaction_id", $data)) {
             $msg = "输入参数不正确";
             $wechat = Wechat::create(
                 [
                     'provider' => 'uv',
-                    'booking' => $notfiyOutput['attach'],
+                    'booking' => $booking_id,
                     'status' => 'FAIL'
                 ]
             );
@@ -57,22 +63,23 @@ class PayNotifyCallBack extends WxPayNotify
             $wechat = Wechat::create(
                 [
                     'provider' => 'uv',
-                    'booking' => $notfiyOutput['attach'],
+                    'booking' => $booking_id,
                     'status' => 'FAIL'
                 ]
             );
             Log::DEBUG("save paymenet failed");
             return false;
         }
+
         $wechat = Wechat::create(
             [
                 'provider' => 'uv',
-                'booking' => $notfiyOutput['attach'],
+                'booking' => $booking_id,
                 'amount' => intval($notfiyOutput['total_fee']) / 100,
                 'status' => $notfiyOutput['return_code'],
                 'transaction_id' => $notfiyOutput['transaction_id'],
-                'booking_name' => "test",
-                'booking_date' => Session::get('booking_date'),
+                'booking_name' => $booking_name,
+                'booking_date' => $booking_date,
                 'bank_type' => $notfiyOutput['bank_type'],
             ]
         );
