@@ -5,7 +5,7 @@ namespace App;
 use App\Lib\WxPayApi;
 use App\Lib\WxPayNotify;
 use App\Lib\WxPayOrderQuery;
-
+use Illuminate\Support\Facades\Session;
 require_once "Lib/WxPay.Api.php";
 require_once 'Lib/WxPay.Notify.php';
 
@@ -72,6 +72,8 @@ class PayNotifyCallBack extends WxPayNotify
                 'status' => $notfiyOutput['return_code'],
                 'transaction_id' => $notfiyOutput['transaction_id'],
                 'bank_type' => $notfiyOutput['bank_type'],
+                'booking_name' => Session::get('booking_name'),
+                'booking_date' => Session::get('booking_date'),
             ]
         );
         Log::DEBUG("save to database");

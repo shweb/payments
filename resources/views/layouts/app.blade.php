@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="{{ url('/') }}/public/css/jquery-ui.css">
     <script src="{{url('/')}}/public/js/jquery-1.12.4.js"></script>
     <script src="{{url('/')}}/public/js/jquery-ui.js"></script>
+    <link rel="stylesheet" href="{{url('/')}}/public/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{url('/')}}/public/css/dataTables.bootstrap.min.css">
 
 </head>
 <body>
