@@ -16,8 +16,8 @@
                     <form role="form" method="POST" action="resutl_search">
                         {{ csrf_field() }}
                         <input type="hidden" name="title" value="payment">
-                        <div class="col-md-3"><input type="texte" name="debut" id="datepicker" placeholder="start date"></div>
-                        <div class="col-md-3"><input type="texte" name="fin" id="datepicker1" placeholder="end date"></div>
+                        <div class="col-md-3"><input type="texte" name="debut" id="datepicker" placeholder="start date" value=" @if(strcmp($title,"created_at")==0) {{$date_debut}} @endif "></div>
+                        <div class="col-md-3"><input type="texte" name="fin" id="datepicker1" placeholder="end date" value="@if(strcmp($title,"created_at")==0) @if(isset($date_fin)) {{$date_fin}} @endif @endif "></div>
                         <div class="col-md-3"><button class=" btn btn-primary" type="submit" id="search">Search</button></div>
                     </form>
                 </div>
@@ -26,10 +26,14 @@
                     <form role="form" method="POST" action="resutl_search">
                         {{ csrf_field() }}
                         <input type="hidden" name="title" value="booking">
-                        <div class="col-md-3"><input type="texte" name="debut" id="datepicker2" placeholder="start date"></div>
-                        <div class="col-md-3"><input type="texte" name="fin" id="datepicker3" placeholder="end date"></div>
+                        <div class="col-md-3"><input type="texte" name="debut" id="datepicker2" placeholder="start date" value="@if(strcmp($title,"booking_date")==0) {{$date_debut}} @endif"></div>
+                        <div class="col-md-3"><input type="texte" name="fin" id="datepicker3" placeholder="end date" value="@if(strcmp($title,"booking_date")==0) @if(isset($date_fin)) {{$date_fin}} @endif @endif"></div>
                         <div class="col-md-3"><button class=" btn btn-primary" type="submit" id="search1">Search</button></div>
                     </form>
+                </div>
+                <div class="panel-body">
+                    <div class="col-md-9"></div>
+                    <div class="col-md-3"><a href="{{url('/')}}/admin/wechat" class=" btn btn-danger" type="submit" id="search1">Clear search</a></div>
                 </div>
                 <!--resultat search-->
                 @if(isset($data))
