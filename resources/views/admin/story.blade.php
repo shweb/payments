@@ -30,6 +30,10 @@
                         <div class="col-md-3"><button class=" btn btn-primary" type="submit" id="search1">Search</button></div>
                     </form>
                 </div>
+                <div class="panel-body">
+                    <div class="col-md-9"></div>
+                    <div class="col-md-3"><a href="{{url('/')}}/admin/wechat" class=" btn btn-danger" type="submit" id="search1">Clear search</a></div>
+                </div>
                 <div class="panel-body" id="generale">
                     <div class="table-responsive users-table">
                         <table class="table table-striped table-condensed data-table">

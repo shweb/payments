@@ -25,12 +25,12 @@ class AdminController extends Controller
 
         if(!empty($date_debut)&& !empty($date_fin)){
             $data=Wechat::get()->where($title,'>=',$date_debut)->where($title,'<=',$date_fin);
-            return view('admin.result')->with(compact('data'));
+            return view('admin.result')->with(compact('data','date_debut','date_fin','title'));
             //return redirect(url('admin/wechat'))->with(compact('data'));
         }
         else if (!empty($date_debut)&& empty($date_fin)){
             $data=Wechat::get()->where($title,'>=',$date_debut);
-            return view('admin.result')->with(compact('data'));
+            return view('admin.result')->with(compact('data','date_debut','title'));
             //return redirect(url('admin/wechat'))->with(compact('data'));
         }
         else if(empty($date_debut)&& empty($date_fin)){
