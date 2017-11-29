@@ -54,6 +54,7 @@
                                     <th>DATE PAYMENT</th>
                                 </tr>
                                 </thead>
+                                @php $nb=1; @endphp
                                 @foreach($data as $d)
                                     <tr>
                                         <td>{{$d->id}}</td>
@@ -71,6 +72,7 @@
                                         <td>{{$d->bank_type}}</td>
                                         <td>{{ \Carbon\Carbon::parse($d->created_at)->format('d M Y')}}</td>
                                     </tr>
+                                    @php $nb++; @endphp
                                 @endforeach
                             </table>
                         </div>
