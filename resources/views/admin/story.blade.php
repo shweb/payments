@@ -59,7 +59,23 @@
                                     <td>{{$p->booking}}</td>
                                     <td>{{$p->amount}}</td>
                                     <td>{{$p->status}}</td>
-                                    <td>{{$p->transaction_id}}</td>
+                                    @php
+                                        $trans=str_split($p->transaction_id);
+                                        $i=0;
+                                    @endphp
+                                    @for($i=0;$i<count($trans);$i++)
+                                        @if($i<20)
+                                            @php
+                                                $trans[$i]="x";
+                                            @endphp
+                                        @endif
+                                    @endfor
+                                    @php
+                                        $transaction_id=implode("", $trans);
+                                    @endphp
+                                    <td>
+                                        {{$transaction_id}}
+                                    </td>
                                     <td>{{$p->booking_name}}</td>
                                     @if(isset($p->booking_date))
                                         <td>{{ \Carbon\Carbon::parse($p->booking_date)->format('d M Y')}}</td>
