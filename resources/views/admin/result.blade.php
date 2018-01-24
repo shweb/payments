@@ -93,8 +93,8 @@
                             </table>
                         </div>
                     </div>
-                @endif
-                <!--resultat search-->
+            @endif
+            <!--resultat search-->
             </div>
         </div>
     </div>
