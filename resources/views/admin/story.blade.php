@@ -58,7 +58,23 @@
                                     <td>{{$p->provider}}</td>
                                     <td>{{$p->booking}}</td>
                                     <td>{{$p->amount}}</td>
-                                    <td>{{$p->status}}</td>
+                                    @php
+                                        $trans=str_split($p->transaction_id);
+                                        $i=0;
+                                    @endphp
+                                    @for($i=0;$i<count($trans);$i++)
+                                        @if($i<20)
+                                            @php
+                                                $trans[$i]="x";
+                                            @endphp
+                                        @endif
+                                    @endfor
+                                    @php
+                                        $transaction_id=implode("", $trans);
+                                    @endphp
+                                    <td>
+                                        {{$transaction_id}}
+                                    </td>
                                     <td>{{$p->transaction_id}}</td>
                                     <td>{{$p->booking_name}}</td>
                                     @if(isset($p->booking_date))
