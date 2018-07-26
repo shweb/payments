@@ -5,7 +5,36 @@
         <div class="row">
             <div class="panel panel-default">
                 <div class="panel-heading panel-default">Payment via wechat</div>
+                <br>
+                <br>
+                <div class="panel-body" id="message">
+                    <div class="col-md-12"><p style="color:#ff0000;">The end date must be superior on the start date.</p></div>
+                </div>
                 <div class="panel-body">
+                    <div class="col-md-3">Payments date</div>
+                    <form role="form" method="POST" action="resutl_search">
+                        {{ csrf_field() }}
+                        <input type="hidden" name="title" value="payment">
+                        <div class="col-md-3"><input type="texte" name="debut" id="datepicker"></div>
+                        <div class="col-md-3"><input type="texte" name="fin" id="datepicker1"></div>
+                        <div class="col-md-3"><button class=" btn btn-primary" type="submit" id="search">Search</button></div>
+                    </form>
+                </div>
+                <div class="panel-body">
+                    <div class="col-md-3">Booking date</div>
+                    <form role="form" method="POST" action="resutl_search">
+                        {{ csrf_field() }}
+                        <input type="hidden" name="title" value="booking">
+                        <div class="col-md-3"><input type="texte" name="debut" id="datepicker2"></div>
+                        <div class="col-md-3"><input type="texte" name="fin" id="datepicker3"></div>
+                        <div class="col-md-3"><button class=" btn btn-primary" type="submit" id="search1">Search</button></div>
+                    </form>
+                </div>
+                <div class="panel-body">
+                    <div class="col-md-9"></div>
+                    <div class="col-md-3"><a href="{{url('/')}}/admin/wechat" class=" btn btn-danger" type="submit" id="search1">Clear search</a></div>
+                </div>
+                <div class="panel-body" id="generale">
                     <div class="table-responsive users-table">
                         <table class="table table-striped table-condensed data-table">
                             <thead>
@@ -16,21 +45,47 @@
                                 <th>AMOUNT</th>
                                 <th>STATUS</th>
                                 <th>TRANSACTION ID</th>
+                                <th>BOOKING NAME</th>
+                                <th>BOOKING DATE</th>
                                 <th>BANK TYPE</th>
                                 <th>DATE PAYMENT</th>
                             </tr>
                             </thead>
+                            @php $nb=1; @endphp
                             @foreach($payments as $p)
                                 <tr>
-                                    <td>{{$p->id}}</td>
+                                    <td>{{$nb}}</td>
                                     <td>{{$p->provider}}</td>
                                     <td>{{$p->booking}}</td>
                                     <td>{{$p->amount}}</td>
                                     <td>{{$p->status}}</td>
-                                    <td>{{$p->transaction_id}}</td>
+                                    @php
+                                        $trans=str_split($p->transaction_id);
+                                        $i=0;
+                                    @endphp
+                                    @for($i=0;$i<count($trans);$i++)
+                                        @if($i<20)
+                                            @php
+                                                $trans[$i]="x";
+                                            @endphp
+                                        @endif
+                                    @endfor
+                                    @php
+                                        $transaction_id=implode("", $trans);
+                                    @endphp
+                                    <td>
+                                        {{$transaction_id}}
+                                    </td>
+                                    <td>{{$p->booking_name}}</td>
+                                    @if(isset($p->booking_date))
+                                        <td>{{ \Carbon\Carbon::parse($p->booking_date)->format('d M Y')}}</td>
+                                    @else
+                                        <td></td>
+                                    @endif
                                     <td>{{$p->bank_type}}</td>
                                     <td>{{ \Carbon\Carbon::parse($p->created_at)->format('d M Y')}}</td>
                                 </tr>
+                                @php $nb++; @endphp
                             @endforeach
                         </table>
                     </div>
@@ -41,6 +96,48 @@
 @endsection
 
 @section('specificScript')
+    <script>
+        $(document).ready(function () {
+            $('#message').hide();
+        });
+        $( function() {
+            $('#datepicker').datepicker({dateFormat: 'yy-mm-dd',});
+            $('#datepicker1').datepicker({dateFormat: 'yy-mm-dd',});
+            $('#datepicker2').datepicker({dateFormat: 'yy-mm-dd',});
+            $('#datepicker3').datepicker({dateFormat: 'yy-mm-dd',});
+        } );
+        $('#search').click(function () {
+            var dd1 = $('#datepicker2').val();
+            var df1 = $('#datepicker3').val();
+            var dd = new Date(dd1);
+            var df = new Date(df1);
+            console.log(dd + "/////" + df);
+            if (df <= dd) {
+                $('#message').show();
+                $('#generale').show();
+                return false;
+            }
+            else{
+                $('#generale').hide();
+            }
+
+        });
+        $('#search1').click(function () {
+            var dd1 = $('#datepicker2').val();
+            var df1 = $('#datepicker3').val();
+            var dd = new Date(dd1);
+            var df = new Date(df1);
+            console.log(dd + "/////" + df);
+            if (df <= dd) {
+                $('#message').show();
+                $('#generale').show();
+                return false;
+            }
+            else{
+                $('#generale').hide();
+            }
+        });
+    </script>
     @if (count($payments) > 10)
         <script src="{{ url('/') }}/public/js/jquery.dataTables.min.js"></script>
         <script src="{{ url('/') }}/public/js/dataTables.bootstrap.min.js"></script>
