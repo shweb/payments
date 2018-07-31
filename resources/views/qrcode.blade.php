@@ -6,7 +6,7 @@
                 <div class="row">
                     <div class="col-md-6 col-xs-12 text-center-md text-center-xs">
                         @if(!empty($url2))
-                            <img src="http://paysdk.weixin.qq.com/example/qrcode.php?data=@php echo urlencode($url2); @endphp"
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?data=@php echo urlencode($url2); @endphp&amp;size=304x236"
                                  class="img-thumbnail qrcod" width="304" height="236">
                         @endif
                         <img src="{{url('/')}}/public/img/communicate.png" class="img-thumbnail communicate"
