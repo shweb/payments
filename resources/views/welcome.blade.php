@@ -115,4 +115,9 @@
         </div>
         {{--<header><h1>Welcome!</h1><h4>It's nice to see you again</h4></header>--}}
     </body>
+	<footer>
+		<div class="content">
+		blabla
+		</div>
+	</footer>
 </html>
