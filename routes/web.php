@@ -19,6 +19,12 @@ Route::group(['prefix' => 'payments'], function () {
     Route::any('/wechat/notify', 'NotifyController@NotifyWechat');
     Route::get('/success', 'NotifyController@successWechat');
     Route::get('/failed', 'NotifyController@errorWechat');
+
+    /*alipay*/
+    Route::get('/alipay', 'QRCodeController@qrcodeAlipay');
+    Route::get('/index-alipay', 'QRCodeController@index_alipay');
+    /*alipay*/
+
 });
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/wechat', 'AdminController@wechat');
