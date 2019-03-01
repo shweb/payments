@@ -117,7 +117,7 @@
     </body>
 	<footer>
 		<div class="content">
-			<h2>沪ICP备16038688号-</h2>
+			<h1>沪ICP备16038688号-</h1>
 		</div>
 	</footer>
 </html>
