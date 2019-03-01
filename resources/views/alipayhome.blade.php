@@ -183,7 +183,7 @@
         <h2 id="tab4" name="tab">退 款 查 询</h2>
         <h2 id="tab5" name="tab">交 易 关 闭</h2>-->
     </div>
-    <form name=alipayment action={{ url('payments/alipay-qrcode') }} method=post target="_blank">
+    <form name=alipayment action={{ url('payments/alipay-qrcode') }} method=get target="_blank">
         <input name="_token" type="hidden" value={{ csrf_token() }}>
         <div id="body1" class="show" name="divcontent">
             <dl class="content">

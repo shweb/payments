@@ -23,7 +23,7 @@ Route::group(['prefix' => 'payments'], function () {
 
     /*alipay*/
     Route::get('/alipay','AlipayController@alipayhome');
-    Route::post('/alipay-qrcode','AlipayController@alipayqrcode');
+    Route::get('/alipay-qrcode','AlipayController@alipayqrcode');
     Route::get('/alipay/notify','AlipayController@notify_url');
     Route::get('/alipay/return','AlipayController@return_url');
     /*alipay*/
