@@ -14,6 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/test','AlipayController@test_view');
+Route::get('/test-retour','AlipayController@test_return');
+
 Route::group(['prefix' => 'payments'], function () {
     Route::get('/wechat', 'QRCodeController@qrCodeWechat');
     Route::any('/wechat/notify', 'NotifyController@NotifyWechat');
