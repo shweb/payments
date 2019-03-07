@@ -55,7 +55,7 @@ Class AlipayController extends Controller
             'gatewayUrl' => "https://openapi.alipay.com/gateway.do",
             'alipay_public_key' => $alipay_public_key,
         );
-        echo "total amount=".$request->get('total_amount')."//////trade_no=".$request->get('trade_no')."//////out_trade_no".$request->get('out_trade_no')."////seller_id=".$request->get('seller_id');
+        echo "subject=".$request->get('subject')."/////total amount=".$request->get('total_amount')."//////trade_no=".$request->get('trade_no')."//////out_trade_no".$request->get('out_trade_no')."////seller_id=".$request->get('seller_id');
         echo "<br/> eto";
         $arr=$_GET;
         $alipaySevice = new AlipayTradeService($config);
