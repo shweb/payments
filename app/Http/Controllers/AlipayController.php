@@ -59,7 +59,7 @@ Class AlipayController extends Controller
         $arr=$_GET;
         $alipaySevice = new AlipayTradeService($config);
         $result = $alipaySevice->check($arr);
-        echo "$_GET";
+        var_dump($_GET);
         var_dump($arr);
         var_dump($result) ;
         //echo $arr["test1"] ;
@@ -101,7 +101,7 @@ Class AlipayController extends Controller
         if($result) {
             $out_trade_no = htmlspecialchars($request->get('out_trade_no'));
             $trade_no = htmlspecialchars($request->get('trade_no'));
-            echo "Vérification réussie<br />Numéro de transaction Alipay：".$trade_no;
+            echo "Vérification réussie.Numéro de transaction Alipay：".$trade_no;
         }
         else {
             echo "La vérification a échoué";
