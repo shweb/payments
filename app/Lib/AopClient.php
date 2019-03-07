@@ -695,11 +695,13 @@ class AopClient {
 			$res = "-----BEGIN PUBLIC KEY-----\n" .
 				wordwrap($pubKey, 64, "\n", true) .
 				"\n-----END PUBLIC KEY-----";
+			echo "ato1". $res;
 		}else {
 			//读取公钥文件
 			$pubKey = file_get_contents($rsaPublicKeyFilePath);
 			//转换为openssl格式密钥
 			$res = openssl_get_publickey($pubKey);
+            echo "ato2". $res;
 		}
 
 		($res) or die('支付宝RSA公钥错误。请检查公钥文件格式是否正确');  
@@ -708,10 +710,12 @@ class AopClient {
 
 		if ("RSA2" == $signType) {
 			$result = (bool)openssl_verify($data, base64_decode($sign), $res, OPENSSL_ALGO_SHA256);
+			echo "result1".$result ;
 		} else {
 			$result = (bool)openssl_verify($data, base64_decode($sign), $res);
+            echo "result2".$result ;
 		}
-
+        exit();
 		if(!$this->checkEmpty($this->alipayPublicKey)) {
 			//释放资源
 			openssl_free_key($res);
