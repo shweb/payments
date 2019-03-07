@@ -35,12 +35,12 @@ class AlipayTradeService {
 	public $signtype = "RSA2";
 
 	function __construct($alipay_config){
-		$this->gateway_url = $alipay_config['gatewayUrl'];
-		$this->appid = $alipay_config['app_id'];
-		$this->private_key = $alipay_config['merchant_private_key'];
-		$this->alipay_public_key = $alipay_config['alipay_public_key'];
-		$this->charset = $alipay_config['charset'];
-		$this->signtype=$alipay_config['sign_type'];
+		$this->gateway_url = $this->gateway_url;
+		$this->appid = $this->appid;
+		$this->private_key = $this->private_key;
+		$this->alipay_public_key = $this->alipay_public_key;
+		$this->charset =  "UTF-8";
+		$this->signtype="RSA2";
 
 		if(empty($this->appid)||trim($this->appid)==""){
 			throw new Exception("appid should not be NULL!");
