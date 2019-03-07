@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Alipay;
 use App\Lib\AlipayTradeService;
 use App\Lib\AlipayTradePagePayContentBuilder;
+use App\Lib\AopClient;
 use Illuminate\Http\Request;
 
 Class AlipayController extends Controller
@@ -90,7 +91,10 @@ Class AlipayController extends Controller
         }
     }
     public function test_view(){
-        echo "\nhuhu<br>hahah";
+        echo "\nhuhu<br>hahah<br>";
+        /*$aop = new AopClient();
+        $aop->alipayrsaPublicKey = $this->alipay_public_key;
+        echo $this->alipay_public_key;*/
         exit();
         return view('test');
     }
