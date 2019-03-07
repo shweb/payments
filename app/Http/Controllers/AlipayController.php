@@ -56,12 +56,13 @@ Class AlipayController extends Controller
             'alipay_public_key' => $alipay_public_key,
         );
         echo "subject=".$request->get('subject')."/////total amount=".$request->get('total_amount')."//////trade_no=".$request->get('trade_no')."//////out_trade_no".$request->get('out_trade_no')."////seller_id=".$request->get('seller_id');
-        echo "\n eto";
+        echo "<br> eto";
         $arr=$_GET;
         $alipaySevice = new AlipayTradeService($config);
         $result = $alipaySevice->check($arr);
         var_dump($_GET);
         var_dump($arr);
+        echo "<br> result= <br>";
         var_dump($result) ;
         //echo $arr["test1"] ;
         /*enregistrer base*/
@@ -89,6 +90,8 @@ Class AlipayController extends Controller
         }
     }
     public function test_view(){
+        echo "\nhuhu<br>hahah";
+        exit();
         return view('test');
     }
     public function test_return(Request $request){
