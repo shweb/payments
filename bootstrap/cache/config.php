@@ -1,270 +1,4 @@
 <?php return array (
-  'view' => 
-  array (
-    'paths' => 
-    array (
-      0 => '/var/www/payments/final/resources/views',
-    ),
-    'compiled' => '/var/www/payments/final/storage/framework/views',
-  ),
-  'session' => 
-  array (
-    'driver' => 'file',
-    'lifetime' => 120,
-    'expire_on_close' => false,
-    'encrypt' => false,
-    'files' => '/var/www/payments/final/storage/framework/sessions',
-    'connection' => NULL,
-    'table' => 'sessions',
-    'store' => NULL,
-    'lottery' => 
-    array (
-      0 => 2,
-      1 => 100,
-    ),
-    'cookie' => 'laravel_session',
-    'path' => '/',
-    'domain' => NULL,
-    'secure' => false,
-    'http_only' => true,
-  ),
-  'broadcasting' => 
-  array (
-    'default' => 'log',
-    'connections' => 
-    array (
-      'pusher' => 
-      array (
-        'driver' => 'pusher',
-        'key' => '',
-        'secret' => '',
-        'app_id' => '',
-        'options' => 
-        array (
-        ),
-      ),
-      'redis' => 
-      array (
-        'driver' => 'redis',
-        'connection' => 'default',
-      ),
-      'log' => 
-      array (
-        'driver' => 'log',
-      ),
-      'null' => 
-      array (
-        'driver' => 'null',
-      ),
-    ),
-  ),
-  'database' => 
-  array (
-    'default' => 'mysql',
-    'connections' => 
-    array (
-      'sqlite' => 
-      array (
-        'driver' => 'sqlite',
-        'database' => 'payments',
-        'prefix' => '',
-      ),
-      'mysql' => 
-      array (
-        'driver' => 'mysql',
-        'host' => '127.0.0.1',
-        'port' => '3306',
-        'database' => 'payments',
-        'username' => 'trusty',
-        'password' => 'trustylabs07',
-        'unix_socket' => '',
-        'charset' => 'utf8',
-        'collation' => 'utf8_unicode_ci',
-        'prefix' => '',
-        'strict' => true,
-        'engine' => NULL,
-      ),
-      'pgsql' => 
-      array (
-        'driver' => 'pgsql',
-        'host' => '127.0.0.1',
-        'port' => '3306',
-        'database' => 'payments',
-        'username' => 'trusty',
-        'password' => 'trustylabs07',
-        'charset' => 'utf8',
-        'prefix' => '',
-        'schema' => 'public',
-        'sslmode' => 'prefer',
-      ),
-      'sqlsrv' => 
-      array (
-        'driver' => 'sqlsrv',
-        'host' => '127.0.0.1',
-        'port' => '3306',
-        'database' => 'payments',
-        'username' => 'trusty',
-        'password' => 'trustylabs07',
-        'charset' => 'utf8',
-        'prefix' => '',
-      ),
-    ),
-    'migrations' => 'migrations',
-    'redis' => 
-    array (
-      'client' => 'predis',
-      'default' => 
-      array (
-        'host' => '127.0.0.1',
-        'password' => NULL,
-        'port' => '6379',
-        'database' => 0,
-      ),
-    ),
-  ),
-  'filesystems' => 
-  array (
-    'default' => 'local',
-    'cloud' => 's3',
-    'disks' => 
-    array (
-      'local' => 
-      array (
-        'driver' => 'local',
-        'root' => '/var/www/payments/final/storage/app',
-      ),
-      'public' => 
-      array (
-        'driver' => 'local',
-        'root' => '/var/www/payments/final/storage/app/public',
-        'url' => 'http://localhost/storage',
-        'visibility' => 'public',
-      ),
-      's3' => 
-      array (
-        'driver' => 's3',
-        'key' => NULL,
-        'secret' => NULL,
-        'region' => NULL,
-        'bucket' => NULL,
-      ),
-    ),
-  ),
-  'mail' => 
-  array (
-    'driver' => 'smtp',
-    'host' => 'smtp.mailtrap.io',
-    'port' => '2525',
-    'from' => 
-    array (
-      'address' => 'hello@example.com',
-      'name' => 'Example',
-    ),
-    'encryption' => NULL,
-    'username' => NULL,
-    'password' => NULL,
-    'sendmail' => '/usr/sbin/sendmail -bs',
-    'markdown' => 
-    array (
-      'theme' => 'default',
-      'paths' => 
-      array (
-        0 => '/var/www/payments/final/resources/views/vendor/mail',
-      ),
-    ),
-  ),
-  'cache' => 
-  array (
-    'default' => 'file',
-    'stores' => 
-    array (
-      'apc' => 
-      array (
-        'driver' => 'apc',
-      ),
-      'array' => 
-      array (
-        'driver' => 'array',
-      ),
-      'database' => 
-      array (
-        'driver' => 'database',
-        'table' => 'cache',
-        'connection' => NULL,
-      ),
-      'file' => 
-      array (
-        'driver' => 'file',
-        'path' => '/var/www/payments/final/storage/framework/cache/data',
-      ),
-      'memcached' => 
-      array (
-        'driver' => 'memcached',
-        'persistent_id' => NULL,
-        'sasl' => 
-        array (
-          0 => NULL,
-          1 => NULL,
-        ),
-        'options' => 
-        array (
-        ),
-        'servers' => 
-        array (
-          0 => 
-          array (
-            'host' => '127.0.0.1',
-            'port' => 11211,
-            'weight' => 100,
-          ),
-        ),
-      ),
-      'redis' => 
-      array (
-        'driver' => 'redis',
-        'connection' => 'default',
-      ),
-    ),
-    'prefix' => 'laravel',
-  ),
-  'auth' => 
-  array (
-    'defaults' => 
-    array (
-      'guard' => 'web',
-      'passwords' => 'users',
-    ),
-    'guards' => 
-    array (
-      'web' => 
-      array (
-        'driver' => 'session',
-        'provider' => 'users',
-      ),
-      'api' => 
-      array (
-        'driver' => 'token',
-        'provider' => 'users',
-      ),
-    ),
-    'providers' => 
-    array (
-      'users' => 
-      array (
-        'driver' => 'eloquent',
-        'model' => 'App\\User',
-      ),
-    ),
-    'passwords' => 
-    array (
-      'users' => 
-      array (
-        'provider' => 'users',
-        'table' => 'password_resets',
-        'expire' => 60,
-      ),
-    ),
-  ),
   'app' => 
   array (
     'name' => 'Laravel',
@@ -274,7 +8,7 @@
     'timezone' => 'UTC',
     'locale' => 'en',
     'fallback_locale' => 'en',
-    'key' => 'base64:yYNhgb69vI1We2YCCIQOxL67aKc7qo9leb2EtxFtXXU=',
+    'key' => 'base64:Rt8ik8yIjEqh6Av91wRUATf5gPXwy9C1OEef139Jxa4=',
     'cipher' => 'AES-256-CBC',
     'log' => 'single',
     'log_level' => 'debug',
@@ -343,6 +77,243 @@
       'URL' => 'Illuminate\\Support\\Facades\\URL',
       'Validator' => 'Illuminate\\Support\\Facades\\Validator',
       'View' => 'Illuminate\\Support\\Facades\\View',
+    ),
+  ),
+  'auth' => 
+  array (
+    'defaults' => 
+    array (
+      'guard' => 'web',
+      'passwords' => 'users',
+    ),
+    'guards' => 
+    array (
+      'web' => 
+      array (
+        'driver' => 'session',
+        'provider' => 'users',
+      ),
+      'api' => 
+      array (
+        'driver' => 'token',
+        'provider' => 'users',
+      ),
+    ),
+    'providers' => 
+    array (
+      'users' => 
+      array (
+        'driver' => 'eloquent',
+        'model' => 'App\\User',
+      ),
+    ),
+    'passwords' => 
+    array (
+      'users' => 
+      array (
+        'provider' => 'users',
+        'table' => 'password_resets',
+        'expire' => 60,
+      ),
+    ),
+  ),
+  'broadcasting' => 
+  array (
+    'default' => 'log',
+    'connections' => 
+    array (
+      'pusher' => 
+      array (
+        'driver' => 'pusher',
+        'key' => '',
+        'secret' => '',
+        'app_id' => '',
+        'options' => 
+        array (
+        ),
+      ),
+      'redis' => 
+      array (
+        'driver' => 'redis',
+        'connection' => 'default',
+      ),
+      'log' => 
+      array (
+        'driver' => 'log',
+      ),
+      'null' => 
+      array (
+        'driver' => 'null',
+      ),
+    ),
+  ),
+  'cache' => 
+  array (
+    'default' => 'file',
+    'stores' => 
+    array (
+      'apc' => 
+      array (
+        'driver' => 'apc',
+      ),
+      'array' => 
+      array (
+        'driver' => 'array',
+      ),
+      'database' => 
+      array (
+        'driver' => 'database',
+        'table' => 'cache',
+        'connection' => NULL,
+      ),
+      'file' => 
+      array (
+        'driver' => 'file',
+        'path' => 'C:\\xampp5.6\\htdocs\\payme\\storage\\framework/cache/data',
+      ),
+      'memcached' => 
+      array (
+        'driver' => 'memcached',
+        'persistent_id' => NULL,
+        'sasl' => 
+        array (
+          0 => NULL,
+          1 => NULL,
+        ),
+        'options' => 
+        array (
+        ),
+        'servers' => 
+        array (
+          0 => 
+          array (
+            'host' => '127.0.0.1',
+            'port' => 11211,
+            'weight' => 100,
+          ),
+        ),
+      ),
+      'redis' => 
+      array (
+        'driver' => 'redis',
+        'connection' => 'default',
+      ),
+    ),
+    'prefix' => 'laravel',
+  ),
+  'database' => 
+  array (
+    'default' => 'mysql',
+    'connections' => 
+    array (
+      'sqlite' => 
+      array (
+        'driver' => 'sqlite',
+        'database' => 'the_pack',
+        'prefix' => '',
+      ),
+      'mysql' => 
+      array (
+        'driver' => 'mysql',
+        'host' => '127.0.0.1',
+        'port' => '3306',
+        'database' => 'the_pack',
+        'username' => 'root',
+        'password' => '',
+        'unix_socket' => '',
+        'charset' => 'utf8',
+        'collation' => 'utf8_unicode_ci',
+        'prefix' => '',
+        'strict' => true,
+        'engine' => NULL,
+      ),
+      'pgsql' => 
+      array (
+        'driver' => 'pgsql',
+        'host' => '127.0.0.1',
+        'port' => '3306',
+        'database' => 'the_pack',
+        'username' => 'root',
+        'password' => '',
+        'charset' => 'utf8',
+        'prefix' => '',
+        'schema' => 'public',
+        'sslmode' => 'prefer',
+      ),
+      'sqlsrv' => 
+      array (
+        'driver' => 'sqlsrv',
+        'host' => '127.0.0.1',
+        'port' => '3306',
+        'database' => 'the_pack',
+        'username' => 'root',
+        'password' => '',
+        'charset' => 'utf8',
+        'prefix' => '',
+      ),
+    ),
+    'migrations' => 'migrations',
+    'redis' => 
+    array (
+      'client' => 'predis',
+      'default' => 
+      array (
+        'host' => '127.0.0.1',
+        'password' => NULL,
+        'port' => '6379',
+        'database' => 0,
+      ),
+    ),
+  ),
+  'filesystems' => 
+  array (
+    'default' => 'local',
+    'cloud' => 's3',
+    'disks' => 
+    array (
+      'local' => 
+      array (
+        'driver' => 'local',
+        'root' => 'C:\\xampp5.6\\htdocs\\payme\\storage\\app',
+      ),
+      'public' => 
+      array (
+        'driver' => 'local',
+        'root' => 'C:\\xampp5.6\\htdocs\\payme\\storage\\app/public',
+        'url' => 'http://localhost/storage',
+        'visibility' => 'public',
+      ),
+      's3' => 
+      array (
+        'driver' => 's3',
+        'key' => NULL,
+        'secret' => NULL,
+        'region' => NULL,
+        'bucket' => NULL,
+      ),
+    ),
+  ),
+  'mail' => 
+  array (
+    'driver' => 'smtp',
+    'host' => 'smtp.postmarkapp.com',
+    'port' => '587',
+    'from' => 
+    array (
+      'address' => 'hello@example.com',
+      'name' => 'Example',
+    ),
+    'encryption' => 'TLS',
+    'username' => 'cbd2f196-1ed6-40d8-9b9a-4f7ab2fe2ba1',
+    'password' => 'cbd2f196-1ed6-40d8-9b9a-4f7ab2fe2ba1',
+    'sendmail' => '/usr/sbin/sendmail -bs',
+    'markdown' => 
+    array (
+      'theme' => 'default',
+      'paths' => 
+      array (
+        0 => 'C:\\xampp5.6\\htdocs\\payme\\resources\\views/vendor/mail',
+      ),
     ),
   ),
   'queue' => 
@@ -414,5 +385,34 @@
       'key' => NULL,
       'secret' => NULL,
     ),
+  ),
+  'session' => 
+  array (
+    'driver' => 'file',
+    'lifetime' => 120,
+    'expire_on_close' => false,
+    'encrypt' => false,
+    'files' => 'C:\\xampp5.6\\htdocs\\payme\\storage\\framework/sessions',
+    'connection' => NULL,
+    'table' => 'sessions',
+    'store' => NULL,
+    'lottery' => 
+    array (
+      0 => 2,
+      1 => 100,
+    ),
+    'cookie' => 'laravel_session',
+    'path' => '/',
+    'domain' => NULL,
+    'secure' => false,
+    'http_only' => true,
+  ),
+  'view' => 
+  array (
+    'paths' => 
+    array (
+      0 => 'C:\\xampp5.6\\htdocs\\payme\\resources\\views',
+    ),
+    'compiled' => 'C:\\xampp5.6\\htdocs\\payme\\storage\\framework\\views',
   ),
 );

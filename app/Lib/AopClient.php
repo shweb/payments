@@ -78,7 +78,7 @@ class AopClient {
 
 
 	//签名类型
-	public $signType = "RSA";
+	public $signType = "RSA2";
 
 
 	//加密密钥和类型
@@ -99,9 +99,9 @@ class AopClient {
 
 	public function getSignContent($params) {
 		ksort($params);
-
 		$stringToBeSigned = "";
 		$i = 0;
+		echo "eto ndray\n";
 		foreach ($params as $k => $v) {
 			if (false === $this->checkEmpty($v) && "@" != substr($v, 0, 1)) {
 
@@ -112,11 +112,12 @@ class AopClient {
 					$stringToBeSigned .= "$k" . "=" . "$v";
 				} else {
 					$stringToBeSigned .= "&" . "$k" . "=" . "$v";
+                    echo $k."=".$v."<br/>";
 				}
 				$i++;
 			}
 		}
-
+        echo "eto ndray\n";
 		unset ($k, $v);
 		return $stringToBeSigned;
 	}
@@ -170,6 +171,8 @@ class AopClient {
 			openssl_free_key($res);
 		}
 		$sign = base64_encode($sign);
+		echo "ato ve e".$sign."ato ve e";
+		//exit();
 		return $sign;
 	}
 
@@ -677,8 +680,12 @@ class AopClient {
 	 **/
 	public function rsaCheckV1($params, $rsaPublicKeyFilePath,$signType='RSA') {
 			$sign = $params['sign'];
-			$params['sign_type'] = null;
-			$params['sign'] = null;
+			//no commenteko fa mety tokony averina
+			//$params['sign_type'] = null;
+			//$params['sign'] = null;
+			echo "????rsaPublicKeyFilePath=".$rsaPublicKeyFilePath;
+			//echo "params==\n".$this->getSignContent($params)."\n";
+
 			return $this->verify($this->getSignContent($params), $sign, $rsaPublicKeyFilePath,$signType);
 	}
 	public function rsaCheckV2($params, $rsaPublicKeyFilePath, $signType='RSA') {
@@ -695,7 +702,8 @@ class AopClient {
 			$res = "-----BEGIN PUBLIC KEY-----\n" .
 				wordwrap($pubKey, 64, "\n", true) .
 				"\n-----END PUBLIC KEY-----";
-			echo "ato1". $res;
+			//echo "ato1".$pubKey;
+			echo "ato1".$res;
 		}else {
 			//读取公钥文件
 			$pubKey = file_get_contents($rsaPublicKeyFilePath);
@@ -709,13 +717,24 @@ class AopClient {
 		//调用openssl内置方法验签，返回bool值
 
 		if ("RSA2" == $signType) {
-			$result = (bool)openssl_verify($data, base64_decode($sign), $res, OPENSSL_ALGO_SHA256);
-			echo "result1".$result ;
+			//$result = openssl_verify($data, base64_decode("YXBwX2lkPTIwMTkwMTA4NjI4NTYwOSZhdXRoX2FwcF9pZD0yMDE5MDEwODYyODU2MDkmY2hhcnNldD1VVEYtOCZtZXRob2Q9YWxpcGF5LnRyYWRlLnBhZ2UucGF5LnJldHVybiZvdXRfdHJhZGVfbm89MjAxOTM3MTU1NTEwNjg4JnNlbGxlcl9pZD0yMDg4MTIxMTg5OTkyNTA3JnNpZ249cDlSVVdERXRrOTR5Z2gxSHE4SC9HRnNMNDBJWS9paFZQMVlpK1VXZDlBVUtTTCs4dEdld0tzNFIyNXVVYW5GeVhHQjNVbUdIcmxQMVN0UGIrNHFoTFI5Q3RmYk91K1RqYVNHeGw1TlkxVzMvM0NaalpQcGJFOUR5OUZzdm5JM1ZoSjBQMFJ2SVB5bDlpNUgwUWNPRWU5am40MHUrY0c4Q1lNQllXdmlFOGRhSXBQYk1UbEI2NzZjWWlqWno3QXVkZWlaMjczRUZQM1NUSExXOWtiRVBKblZ3ZDM1SUF5SkNPdDNiRHdaMnI5ekNMRGptN3ZNWElvZVFLVnR5T3ZCd0dQSUlLcGNQNjJTMEFuUEw2K1g3cURIUndGTnVJMktHVkVCNFhkc3VqdWp3TG0vVyswMG1ybTJOSUlXN255T090T1p0Q0kyN3J3WGFRcGxiVHFWbUhBPT0mc2lnbl90eXBlPVJTQTImdGltZXN0YW1wPTIwMTktMDMtMDcgMjE6MTA6MjMmdG90YWxfYW1vdW50PTAuMDEmdHJhZGVfbm89MjAxOTAzMDcyMjAwMTQ4NTMzMTAyMDI3NjYyNSZ2ZXJzaW9uPTEuMA=="), $res, OPENSSL_ALGO_SHA256);
+
+            $result = openssl_verify($data, base64_decode($sign),$res, OPENSSL_ALGO_SHA256);
+            $bool=(bool)$result;
+            //var_dump((bool) 0);
+            //$data="app_id=201901086285609&auth_app_id=201901086285609&charset=UTF-8&method=alipay.trade.page.pay.return&out_trade_no=201937155510688&seller_id=2088121189992507&sign=p9RUWDEtk94ygh1Hq8H/GFsL40IY/ihVP1Yi+UWd9AUKSL+8tGewKs4R25uUanFyXGB3UmGHrlP1StPb+4qhLR9CtfbOu+TjaSGxl5NY1W3/3CZjZPpbE9Dy9FsvnI3VhJ0P0RvIPyl9i5H0QcOEe9jn40u+cG8CYMBYWviE8daIpPbMTlB676cYijZz7AudeiZ273EFP3STHLW9kbEPJnVwd35IAyJCOt3bDwZ2r9zCLDjm7vMXIoeQKVtyOvBwGPIIKpcP62S0AnPL6+X7qDHRwFNuI2KGVEB4XdsujujwLm/W+00mrm2NIIW7nyOOtOZtCI27rwXaQplbTqVmHA==&sign_type=RSA2&timestamp=2019-03-07 21:10:23&total_amount=0.01&trade_no=2019030722001485331020276625&version=1.0";
+            echo "\n data\n";
+            echo $data;
+            //echo "&times";
+            echo "\n data\n";
+            echo "result1=".$result."///".$bool."vita";
+            return $result;
+
 		} else {
 			$result = (bool)openssl_verify($data, base64_decode($sign), $res);
             echo "result2".$result ;
 		}
-        exit();
+        //exit();
 		if(!$this->checkEmpty($this->alipayPublicKey)) {
 			//释放资源
 			openssl_free_key($res);
