@@ -79,7 +79,7 @@ Class AlipayController extends Controller
 
         /*enregistrer base*/
 
-
+        echo "eto";
         exit();
         if($result) {
             $out_trade_no = htmlspecialchars($request->get('out_trade_no'));
