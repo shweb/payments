@@ -17,9 +17,9 @@ class CreateAlipayTable extends Migration
             $table->increments('id');
             $table->string('provider');
             $table->integer('booking');
-            $table->string('method')->nullable();
-            $table->float('total_amount')->nullable();
-            $table->string('out_trade_no')->nullable();
+            $table->dateTime('timestamp');
+            $table->float('total_amount');
+            $table->string('out_trade_no');
             $table->string('trade_no');
             $table->string('seller_id');
             $table->string('status');

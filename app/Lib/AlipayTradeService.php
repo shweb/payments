@@ -84,10 +84,10 @@ class AlipayTradeService {
 	
 		$request->setNotifyUrl($notify_url);
 		$request->setReturnUrl($return_url);
-		$request->setBizContent ( $biz_content );
+		$request->setBizContent($biz_content);
 	
 		// 首先调用支付api
-		$response = $this->aopclientRequestExecute ($request,true);
+		$response = $this->aopclientRequestExecute($request,true);
 		// $response = $response->alipay_trade_wap_pay_response;
 		return $response;
 	}

@@ -59,12 +59,20 @@ Class AlipayController extends Controller
         //echo "subject=".$request->get('subject')."/////total amount=".$request->get('total_amount')."//////trade_no=".$request->get('trade_no')."//////out_trade_no".$request->get('out_trade_no')."////seller_id=".$request->get('seller_id');
         //echo "<br> eto";
         $arr=$_GET;
+        /* var_dump(arr) */
+        echo "arrr\n";
+        var_dump($arr);
+        echo "arrr\n";
+        echo "bizContentarr\n";
+        var_dump($request->get('biz_content'));
+        echo "bizContentarr\n";
+        /* var_dump(arr) */
         $alipaySevice = new AlipayTradeService($config);
         $result = $alipaySevice->check($arr);
         //var_dump($_GET);
         //var_dump($arr);
 
-        $alipaySevice = new AlipayTradeService($config);
+        //$alipaySevice = new AlipayTradeService($config);
         //exit();
         //$result = $alipaySevice->check($array);
         echo "\n result \n";
@@ -72,6 +80,16 @@ Class AlipayController extends Controller
         echo "mande";
         exit();
         if($result==1) {
+            $alipay=Alipay::create([
+                'provider' => 'uv',
+                'booking' => '1212', //mbola ts aiko hoe ina
+                'timestamp' => $request->get('timestamp'),
+                'total_amount' => $request->get('total_amount'),
+                'out_trade_no' => $request->get('out_trade_no'),
+                'trade_no' => $request->get('trade_no'),
+                'seller_id' => $request->get('seller_id'),
+                'status' => 'SUCCESS',
+            ]);
             return view('alipay-succes');
         }
         else {
@@ -107,8 +125,18 @@ Class AlipayController extends Controller
         }
     }
     public function test_view(){
-
-        $alipay_public_key = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAuYzzbrCblNXsVKls5WVmwDYMD0ZFidW0FU6oD1cIGQRCQSjbQZB2udN57XcfZx7I+6oEgDOhDEM+yNUCkl8GTfstXhPFepNWCD5Mdet7uFjjiopb6XwstLf/ZaqlR/9BF9FNa2tYmbBukvJdBrJVIXiz0Qm5UO2eY/43wo6qbcaXkd/VKfijCBcLhQXcICup2HdrbAdXGgJM0d/C0UGfx+62sEuwjuSlB2ndpur1kkF5dZjJ2dvJPUqQr+xB6Mdf1Ig4tqI6JhwyTfhg7Sr+t95qx1DriXnKk3pgQDJ6yejQKZefxnbO8cLV5eUwlpUxr9JYxrjRhJwjzKCMMdUE0QIDAQAB";
+        //efa mety
+        $alipay=Alipay::create([
+            'provider' => 'uv',
+            'booking' => '1212', //mbola ts aiko hoe ina
+            'timestamp' => "2019-03-07 21:10:23",
+            'total_amount' => 0.01,
+            'out_trade_no' => "201937155510688",
+            'trade_no' => "2019030722001485331020276625 ",
+            'seller_id' => "2088121189992507",
+            'status' => 'SUCCESS',
+        ]);
+        /*$alipay_public_key = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAuYzzbrCblNXsVKls5WVmwDYMD0ZFidW0FU6oD1cIGQRCQSjbQZB2udN57XcfZx7I+6oEgDOhDEM+yNUCkl8GTfstXhPFepNWCD5Mdet7uFjjiopb6XwstLf/ZaqlR/9BF9FNa2tYmbBukvJdBrJVIXiz0Qm5UO2eY/43wo6qbcaXkd/VKfijCBcLhQXcICup2HdrbAdXGgJM0d/C0UGfx+62sEuwjuSlB2ndpur1kkF5dZjJ2dvJPUqQr+xB6Mdf1Ig4tqI6JhwyTfhg7Sr+t95qx1DriXnKk3pgQDJ6yejQKZefxnbO8cLV5eUwlpUxr9JYxrjRhJwjzKCMMdUE0QIDAQAB";
         $merchant_private_key = "MIIEowIBAAKCAQEAuYzzbrCblNXsVKls5WVmwDYMD0ZFidW0FU6oD1cIGQRCQSjbQZB2udN57XcfZx7I+6oEgDOhDEM+yNUCkl8GTfstXhPFepNWCD5Mdet7uFjjiopb6XwstLf/ZaqlR/9BF9FNa2tYmbBukvJdBrJVIXiz0Qm5UO2eY/43wo6qbcaXkd/VKfijCBcLhQXcICup2HdrbAdXGgJM0d/C0UGfx+62sEuwjuSlB2ndpur1kkF5dZjJ2dvJPUqQr+xB6Mdf1Ig4tqI6JhwyTfhg7Sr+t95qx1DriXnKk3pgQDJ6yejQKZefxnbO8cLV5eUwlpUxr9JYxrjRhJwjzKCMMdUE0QIDAQABAoIBADq7KrJ2pEhQDiYeGqHhnsxoTxjmnUwroHy+EOQKID4K4w3M6Nmv6GSZU5aehgoV7Hf8MMCDlw5SmqTnB5FdEpnMT2ffyjoqOKkTTxBkIR0QxbUsZjtZWq05MFX11ascWHY5gc/mgnzjI5zPqjJccCXQFtqrwUSkceYkqXGjxr5H+9YBZs1al7lt02EO0+59aXo5CkcZnbCRu7j1j8ADx+c4iFe41UmzEAXgotuhCnR66Omgbv9NndW1jC5VmAc1kVPuLFJAlu2I7y2b2NGPIe1rhUXH58hXwsW5DF8TCUKIO35EYOcJuRvVV5IZoaICBvERtYFDLMQTeLK0tY278aECgYEA4S8glEeBR2gw5Zpn71WHCSnehe3wrD/OwtCg8glysyr3Eo8tAhNIyQfb/W1il30s76YK1401rJ4LzWBDKnS8/FF8PXFxlMjD+gkC0Mc40lmuA+Ejz2AtjRZY2qfzC3Mo0wRQfK3spzj5JSozuZXoXsF14u/sg2gKw0cW7BcSkisCgYEA0vFX7OIN2rxc25ar4fb0f5zk3GhrUPvGlwDu77ZKPFkJnWmrgPAzlQBvQuZB5ltO0dNjYyXkDJZRZinTd0IdPS/sro3K8TXa+bG4LJB5MHVSoIoyeKpwVgEVDm3mrMb8ChjwRGxs7hhgApXEX9sDyoBFrADyPaIknot+RMBn0vMCgYANt2ksnw5o4xfXZIhgM719+WbskYnPdDOL+llTZO/vqfZS0xXSwon0dN4ZmcgfoihSkLKoXpmeYiIl6G8u7t10ISKIO5jHj1Mgr9vUC86SQZQv+E7OGvWrWmkfKIvNbr5V3DVq4s0/gmDqup9b9p2o5+/eWu71Mik1q+bhiqY+8QKBgQDBmBPc6J5UeHk0YvS+vnooQGLeUcrkGR5qacXgJEm/Vuv3Fwr6m/iLMEnseQxUEMqm0b2uOhEw6CgufgaAtiHFjR1IGgP+GjIs5UklRTakHZjGk+68RZgxpm6fvodtXHXmAntIIMZcQeyjkrYWTxgMmmrW8Eth+1RmWZl6GadvtwKBgHM67cLSFZUB+PJUnSsDsXQ0T5UaF9PWlm9NkVZcD1Mb3u5A3T6sGVCG5QrSnMYgFMexD1yWmhIf72Gm0SvPdjfkcVuq7L/X+QVIlsux99sSMUKym55XhUTTE99tEWxyhtguyO/JcqRDIgNhF3W93vQdXl+H+xtKIZWF70Y+h0uy";
         $config = array (
             'app_id' => "2019010862858609",
@@ -126,9 +154,7 @@ Class AlipayController extends Controller
             "out_trade_no" => "201937155510688",
             "method" => "alipay.trade.page.pay.return",
             "total_amount" => "0.01",
-            //"sign" => "rCSeEGTmsRXlyE+dON6Dzyi26FW2FEPuc8s+y1/nsGKQxeKySnw+QAKQVxZMcCAvpLQTB9wjU7wA8OiCVWDhUDckxaQqxqm5DrW3SE8wkxi11Qkq3rusMYEZZKn9awcTwjJwIEepau8Gt",
             "sign" => "p9RUWDEtk94ygh1Hq8H/GFsL40IY/ihVP1Yi+UWd9AUKSL+8tGewKs4R25uUanFyXGB3UmGHrlP1StPb+4qhLR9CtfbOu+TjaSGxl5NY1W3/3CZjZPpbE9Dy9FsvnI3VhJ0P0RvIPyl9i5H0QcOEe9jn40u+cG8CYMBYWviE8daIpPbMTlB676cYijZz7AudeiZ273EFP3STHLW9kbEPJnVwd35IAyJCOt3bDwZ2r9zCLDjm7vMXIoeQKVtyOvBwGPIIKpcP62S0AnPL6+X7qDHRwFNuI2KGVEB4XdsujujwLm/W+00mrm2NIIW7nyOOtOZtCI27rwXaQplbTqVmHA==",
-            //"sign" => "zazaWDEtk94ygh1Hq8H/GFsL40IY/ihVP1Yi+UWd9AUKSL+8tGewKs4R25uUanFyXGB3UmGHrlP1StPb+4qhLR9CtfbOu+TjaSGxl5NY1W3/3CZjZPpbE9Dy9FsvnI3VhJ0P0RvIPyl9i5H0QcOEe9jn40u+cG8CYMBYWviE8daIpPbMTlB676cYijZz7AudeiZ273EFP3STHLW9kbEPJnVwd35IAyJCOt3bDwZ2r9zCLDjm7vMXIoeQKVtyOvBwGPIIKpcP62S0AnPL6+X7qDHRwFNuI2KGVEB4XdsujujwLm/W+00mrm2NIIW7nyOOtOZtCI27rwXaQplbTqVmHA==",
             "trade_no"=> "2019030722001485331020276625",
             "auth_app_id"=> "201901086285609",
             "version"=> "1.0",
@@ -136,16 +162,11 @@ Class AlipayController extends Controller
             "sign_type"=> "RSA2",
             "seller_id"=> "2088121189992507",
             "timestamp"=> "2019-03-07 21:10:23",
-            //'gatewayUrl' => "https://openapi.alipay.com/gateway.do",
         );
-        //var_dump($array);
-
         echo "\nhuhu<br>hahah<br>";
         $alipaySevice = new AlipayTradeService($config);
-        //exit();
         $result = $alipaySevice->check($array);
         echo "\n result \n";
-        //var_dump($result) ;
         echo "mande";
         if($result==1) {
 
@@ -155,12 +176,9 @@ Class AlipayController extends Controller
             echo "La vérification a échoué";
         }
 
-        /*$aop = new AopClient();
-        $aop->alipayrsaPublicKey = $this->alipay_public_key;
-        echo $this->alipay_public_key;*/
         exit();
 
-        return view('test');
+        return view('test');*/
     }
     public function test_return(Request $request){
 
