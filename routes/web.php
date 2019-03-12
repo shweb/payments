@@ -33,6 +33,7 @@ Route::group(['prefix' => 'payments'], function () {
 });
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/wechat', 'AdminController@wechat');
+    Route::get('/alipay', 'AdminController@alipay');
     Route::post('/resutl_search', 'AdminController@trie_date');
 });
 

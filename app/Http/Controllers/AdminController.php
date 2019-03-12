@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Wechat;
+use App\Alipay;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -12,6 +13,14 @@ class AdminController extends Controller
         $payments = Wechat::get();
         return view('admin.story')->with(compact('payments'));
     }
+    public function alipay()
+    {
+        $payments = Alipay::get();
+        return view('admin.storyalipay')->with(compact('payments'));
+    }
+
+
+
     public function trie_date(Request $req){
         $title=$req->input('title');
         $date_debut=$req->input('debut');
