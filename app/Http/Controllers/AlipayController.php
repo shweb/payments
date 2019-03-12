@@ -117,7 +117,7 @@ Class AlipayController extends Controller
 
         /*enregistrer base*/
 
-        echo "eto";
+        /*echo "eto";
         exit();
         if($result) {
             $out_trade_no = htmlspecialchars($request->get('out_trade_no'));
@@ -126,7 +126,7 @@ Class AlipayController extends Controller
         }
         else {
             echo "La vérification a échoué";
-        }
+        }*/
     }
     public function test_view(){
         //efa mety
