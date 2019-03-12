@@ -82,7 +82,7 @@ Class AlipayController extends Controller
         echo "\n result=". $result ." \n";
         //var_dump($result) ;
         echo "mande";
-        exit();
+        //exit();
         if($result==1) {
             $alipay=Alipay::create([
                 'provider' => 'uv',
@@ -94,7 +94,7 @@ Class AlipayController extends Controller
                 'seller_id' => $request->get('seller_id'),
                 'status' => 'SUCCESS',
             ]);
-            return view('alipay-succes');
+            return view('alipay-succes')->with(compact('booking'));
         }
         else {
             return view('alipay-error');
@@ -270,6 +270,11 @@ Class AlipayController extends Controller
             ]);
             echo "fail";
         }
+    }
+    public function getPayement(Request $req)
+    {
+        $alipay = Alipay::where('booking', '=', $req->input('booking'))->get()->take(1);
+        return $alipay[0]->total_amount . '|' . $alipay[0]->trade_no . '|' . Carbon::parse($alipay[0]->created_at)->format('Y-m-d');
     }
 }
 
