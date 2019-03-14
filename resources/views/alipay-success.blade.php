@@ -37,13 +37,13 @@
             type: 'GET',
             data: 'booking={{ $booking }}',
             success: function (data) {
-                var amount = data.split('|')[0];
-                var transaction = data.split('|')[1];
-                var date = data.split('|')[2];
+                //var amount = data.split('|')[0];
+                //var transaction = data.split('|')[1];
+                //var date = data.split('|')[2];
                 $.ajax({
                     url: 'https://preprod.uvbypp.cc/bkk/adminv2/index.php/alipay/callback',
                     type: 'GET',
-                    data: 'booking={{ $booking }}&status=PAID&amount=' + amount + '&date=' + date + '&transaction=' + transaction,
+                    data: 'booking={{ $booking }}&status=PAID&amount=' + {{ $total_amount }} + '&date=' + {{ $timestamp }} + '&transaction=' + {{ $trade_no }},
                     datatype:'jsonp',
                     crossDomain: true,
                     success: function (callback) {
