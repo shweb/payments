@@ -97,7 +97,7 @@ Class AlipayController extends Controller
                 'seller_id' => $request->get('seller_id'),
                 'status' => 'SUCCESS',
             ]);
-            return view('alipay-succes')->with(compact('booking','total_amount','trade_no','timestamp'));
+            return view('alipay-success')->with(compact('booking','total_amount','trade_no','timestamp'));
         }
         else {
             return view('alipay-error');
