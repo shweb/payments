@@ -6,6 +6,7 @@ use App\Lib\AlipayTradeService;
 use App\Lib\AlipayTradePagePayContentBuilder;
 use App\Lib\AopClient;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 Class AlipayController extends Controller
 {
@@ -132,7 +133,7 @@ Class AlipayController extends Controller
         }*/
     }
     public function test_view(){
-        $booking=15807;
+        $booking=15809;
         $total_amount=0.01;
         $trade_no="123123u4i32u5i43";
         $timestamp="2019-08-18";
