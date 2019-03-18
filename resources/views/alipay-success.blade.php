@@ -56,7 +56,7 @@
                 $.ajax({
                     url: 'https://preprod.uvbypp.cc/bkk/adminv2/index.php/alipay/callback',
                     type: 'GET',
-                    data: 'booking={{\Illuminate\Support\Facades\Session::get('booking_id')}}&status=PAID&amount=' + amount + '&date=' + date + '&transaction=' + transaction,
+                    data: 'booking={{ $booking }}&status=PAID&amount=' + amount + '&date=' + date + '&transaction=' + transaction,
                     datatype:'jsonp',
                     crossDomain: true,
                     success: function (callback) {
