@@ -1,5 +1,18 @@
-@extends("template")
+@extends("template-alipay")
 @section("contenu")
+    <section>
+        <div class="container">
+            <div class="row information">
+                <div class="col-md-6 col-xs-12">
+                    <p><label>Order number :</label> {{ $booking }}</p>
+                </div>
+                <div class="col-md-6 col-xs-12 ">
+                    <p class= "text-left-xs text-left-sm text-right-md"><label>Total Price :</label>{{ $total_amount }}</p>
+                </div>
+            </div>
+            <hr class="separate">
+        </div>
+    </section>
     <section>
         <div class="container" id="success">
             <div class="separated hidden-xs "></div>
