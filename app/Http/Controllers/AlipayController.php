@@ -85,9 +85,7 @@ Class AlipayController extends Controller
         //echo "mande";
         //exit();
         if($result==1) {
-            $total_amount=$request->get('total_amount');
-            $trade_no=$request->get('trade_no');
-            $timestamp=$request->get('timestamp');
+            
             $alipay=Alipay::create([
                 'provider' => 'uv',
                 'booking' => $booking, //mbola ts aiko hoe ina
@@ -98,7 +96,7 @@ Class AlipayController extends Controller
                 'seller_id' => $request->get('seller_id'),
                 'status' => 'SUCCESS',
             ]);
-            return view('alipay-success')->with(compact('booking','total_amount','trade_no','timestamp'));
+            return view('alipay-success')->with(compact('booking'));
         }
         else {
             return view('alipay-error');
@@ -134,10 +132,7 @@ Class AlipayController extends Controller
     }
     public function test_view(){
         $booking=15809;
-        $total_amount=0.01;
-        $trade_no="123123u4i32u5i43";
-        $timestamp="2019-08-18";
-        return view('alipay-success')->with(compact('booking','total_amount','trade_no','timestamp'));
+        return view('alipay-success')->with(compact('booking'));
 
 
 
