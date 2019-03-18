@@ -60,16 +60,16 @@ Class AlipayController extends Controller
         //echo "<br> eto";
         $arr=$_GET;
         /* var_dump(arr) */
-        echo "donnee\n";
+        //echo "donnee\n";
         $texte= explode( '/',$request->get('out_trade_no'));
         $booking=$texte[1];
-        echo "booking =". $booking. "\n";
-        echo "timestamp =". $request->get('timestamp'). "\n";
-        echo "total_amount =". $request->get('total_amount'). "\n";
-        echo "out_trade_no =". $request->get('out_trade_no'). "\n";
-        echo "trade_no =". $request->get('trade_no'). "\n";
-        echo "seller_id =". $request->get('seller_id'). "\n";
-        echo "donnee\n";
+        //echo "booking =". $booking. "\n";
+        //echo "timestamp =". $request->get('timestamp'). "\n";
+        //echo "total_amount =". $request->get('total_amount'). "\n";
+        //echo "out_trade_no =". $request->get('out_trade_no'). "\n";
+        //echo "trade_no =". $request->get('trade_no'). "\n";
+        //echo "seller_id =". $request->get('seller_id'). "\n";
+        //echo "donnee\n";
         /* var_dump(arr) */
         $alipaySevice = new AlipayTradeService($config);
         $result = $alipaySevice->check($arr);
@@ -79,9 +79,9 @@ Class AlipayController extends Controller
         //$alipaySevice = new AlipayTradeService($config);
         //exit();
         //$result = $alipaySevice->check($array);
-        echo "\n result=". $result ." \n";
+        //echo "\n result=". $result ." \n";
         //var_dump($result) ;
-        echo "mande";
+        //echo "mande";
         //exit();
         if($result==1) {
             $total_amount=$request->get('total_amount');
@@ -132,11 +132,20 @@ Class AlipayController extends Controller
         }*/
     }
     public function test_view(){
+        $booking=15807;
+        $total_amount=0.01;
+        $trade_no="123123u4i32u5i43";
+        $timestamp="2019-08-18";
+        return view('alipay-success')->with(compact('booking','total_amount','trade_no','timestamp'));
+
+
+
+
         //efa mety
-        $texte= explode( '/',"201931212426869/15806" );
+        /*$texte= explode( '/',"201931212426869/15806" );
         $outtrade=$texte[0];
         $booking=$texte[1];
-        echo $outtrade ."\n". $booking;
+        echo $outtrade ."\n". $booking;*/
         /*$alipay=Alipay::create([
             'provider' => 'uv',
             'booking' => '1212', //mbola ts aiko hoe ina
