@@ -54,7 +54,7 @@
                 var transaction = data.split('|')[1];
                 var date = data.split('|')[2];
                 $.ajax({
-                    url: 'https://preprod.uvbypp.cc/bkk/adminv2/index.php/alipay/callback',
+                    url: 'https://uvbypp.cc/bkk/adminv2/index.php/alipay/callback',
                     type: 'GET',
                     data: 'booking={{ $booking }}&status=PAID&amount=' + amount + '&date=' + date + '&transaction=' + transaction,
                     datatype:'jsonp',
@@ -73,7 +73,7 @@
 
                         setTimeout(redirect, 5000);
                         function redirect() {
-                            window.location.href = 'https://preprod.uvbypp.cc/bookings/account/history';
+                            window.location.href = 'https://uvbypp.cc/bookings/account/history';
                         }
                     }, error: function (XMLHttpRequest, textStatus, errorThrown) {
                         var n = 5;
@@ -89,7 +89,7 @@
 
                         setTimeout(redirect, 5000);
                         function redirect() {
-                            window.location.href = 'https://preprod.uvbypp.cc/bookings/account/history';
+                            window.location.href = 'https://uvbypp.cc/bookings/account/history';
                         }
                     }
                 });
