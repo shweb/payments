@@ -101,7 +101,7 @@ class AopClient {
 		ksort($params);
 		$stringToBeSigned = "";
 		$i = 0;
-		//echo "eto ndray\n";
+		echo "eto ndray\n";
 		foreach ($params as $k => $v) {
 			if (false === $this->checkEmpty($v) && "@" != substr($v, 0, 1)) {
 
@@ -112,12 +112,12 @@ class AopClient {
 					$stringToBeSigned .= "$k" . "=" . "$v";
 				} else {
 					$stringToBeSigned .= "&" . "$k" . "=" . "$v";
-                    //echo $k."=".$v."<br/>";
+                    echo $k."=".$v."<br/>";
 				}
 				$i++;
 			}
 		}
-        //echo "eto ndray\n";
+        echo "eto ndray\n";
 		unset ($k, $v);
 		return $stringToBeSigned;
 	}
@@ -171,7 +171,7 @@ class AopClient {
 			openssl_free_key($res);
 		}
 		$sign = base64_encode($sign);
-		//echo "ato ve e".$sign."ato ve e";
+		echo "ato ve e".$sign."ato ve e";
 		//exit();
 		return $sign;
 	}
@@ -683,7 +683,7 @@ class AopClient {
 			//no commenteko fa mety tokony averina
 			//$params['sign_type'] = null;
 			//$params['sign'] = null;
-			//echo "????rsaPublicKeyFilePath=".$rsaPublicKeyFilePath;
+			echo "????rsaPublicKeyFilePath=".$rsaPublicKeyFilePath;
 			//echo "params==\n".$this->getSignContent($params)."\n";
 
 			return $this->verify($this->getSignContent($params), $sign, $rsaPublicKeyFilePath,$signType);
@@ -703,13 +703,13 @@ class AopClient {
 				wordwrap($pubKey, 64, "\n", true) .
 				"\n-----END PUBLIC KEY-----";
 			//echo "ato1".$pubKey;
-			//echo "ato1".$res;
+			echo "ato1".$res;
 		}else {
 			//读取公钥文件
 			$pubKey = file_get_contents($rsaPublicKeyFilePath);
 			//转换为openssl格式密钥
 			$res = openssl_get_publickey($pubKey);
-            //echo "ato2". $res;
+            echo "ato2". $res;
 		}
 
 		($res) or die('支付宝RSA公钥错误。请检查公钥文件格式是否正确');  
@@ -723,16 +723,16 @@ class AopClient {
             $bool=(bool)$result;
             //var_dump((bool) 0);
             //$data="app_id=201901086285609&auth_app_id=201901086285609&charset=UTF-8&method=alipay.trade.page.pay.return&out_trade_no=201937155510688&seller_id=2088121189992507&sign=p9RUWDEtk94ygh1Hq8H/GFsL40IY/ihVP1Yi+UWd9AUKSL+8tGewKs4R25uUanFyXGB3UmGHrlP1StPb+4qhLR9CtfbOu+TjaSGxl5NY1W3/3CZjZPpbE9Dy9FsvnI3VhJ0P0RvIPyl9i5H0QcOEe9jn40u+cG8CYMBYWviE8daIpPbMTlB676cYijZz7AudeiZ273EFP3STHLW9kbEPJnVwd35IAyJCOt3bDwZ2r9zCLDjm7vMXIoeQKVtyOvBwGPIIKpcP62S0AnPL6+X7qDHRwFNuI2KGVEB4XdsujujwLm/W+00mrm2NIIW7nyOOtOZtCI27rwXaQplbTqVmHA==&sign_type=RSA2&timestamp=2019-03-07 21:10:23&total_amount=0.01&trade_no=2019030722001485331020276625&version=1.0";
-            //echo "\n data\n";
-            //echo $data;
+            echo "\n data\n";
+            echo $data;
             //echo "&times";
-            //echo "\n data\n";
-            //echo "result1=".$result."///".$bool."vita";
+            echo "\n data\n";
+            echo "result1=".$result."///".$bool."vita";
             //return $result;
             return 1;
 		} else {
 			$result = (bool)openssl_verify($data, base64_decode($sign), $res);
-            //echo "result2".$result ;
+            echo "result2".$result ;
 		}
         //exit();
 		if(!$this->checkEmpty($this->alipayPublicKey)) {
