@@ -40,7 +40,7 @@ Class AlipayController extends Controller
         $payRequestBuilder->setOutTradeNo($out_trade_no);
         $aop = new AlipayTradeService($config);
         $response = $aop->pagePay($payRequestBuilder,$config['return_url'],$config['notify_url']);
-        var_dump($response);
+        //var_dump($response);
 
 
     }
