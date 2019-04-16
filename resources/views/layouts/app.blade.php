@@ -63,6 +63,7 @@
                             <ul class="dropdown-menu" role="menu">
                                 <li>
                                     <a href="{{url('admin/wechat')}}">Wechat history</a>
+                                    <a href="{{url('admin/alipay')}}">Alipay history</a>
                                 </li>
 
                                 <li>
