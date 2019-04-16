@@ -23,7 +23,6 @@
                                 <th>STATUS</th>
                                 <th>OUT TRADE NO</th>
                                 <th>TRADE NO</th>
-                                <th>SELLER ID</th>
                                 <th>DATE PAYMENT</th>
                             </tr>
                             </thead>
